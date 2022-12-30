@@ -45,6 +45,8 @@ void Banner();
 
 int SubMenu();
 
+int SubMenuChangeFieldDivision();
+
 
  
 #endif

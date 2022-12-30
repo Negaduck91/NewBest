@@ -1,12 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <windows.h>
+//#include <windows.h>
 
 #include "Menus.hxx"
 #include "umlaute.h"
 #include "BaseScaff.hxx"
-#include "Logger.hxx"
+//#include "Logger.hxx"
 #include "Utilities.hxx"
 
 
@@ -114,13 +114,10 @@ void Banner(){
 
 void GetMontageInput(UserInput& ToFill){
 	int FT=0;
-/*#ifdef WIN32 
-	system("Color 0A");
-#endif*/
-	
+
 	do{
-		std::cout <<  "\n\tRahmenwahl \n\t<1> 70er Ger"<<ue<<"st\n"
-					 "\t<2> 100er Ger"<<ue<<"st \n";
+		std::cout <<  "\n\tRahmenwahl \n\t<1> 70er Geruest\n"
+					 "\t<2> 100er Geruest \n";
 		std::cout << "\tIhre Wahl: ";
 		std::string temp("");
 		std::getline(std::cin,temp);
@@ -180,7 +177,7 @@ void NewBaseScaff(const UserInput& Input){
 }
 
 std::string InputConstructionSiteName(void){
-	std::cout << "\nGeben Sie den Baustellenamen ein:  " << std::endl;
+	std::cout << "\nGeben Sie den Baustellennamen ein:  " << std::endl;
 	std::string temp("");
 	std::getline(std::cin,temp);
 	if(temp=="")exit(0);
@@ -203,11 +200,11 @@ int GetDismantlingInput(){
             del += CS;
             del += ".bin";
             if(EraseFile(del.c_str())){
-				LOGGER->Log("Couldnt delete File\n");
+				Logfile::getInstance().write("Couldnt delete File\n");
 				return 1;
 			}
-			
-            LOGGER->Log("Deleting File complete.\n");	
+			Logfile::getInstance().write("Deleting File complete.\n");
+
 		}
 		return 0;
 }
@@ -217,7 +214,7 @@ int SubMenu(){
 	std::string Temp("");
 	do{
 		std::cout << "\t\n\n\t+----------------------------------------------------+\n";
-		std::cout << "\t|  [1] Feldeinteilung "<< ae << "ndern                         |\n";
+		std::cout << "\t|  [1] Feldeinteilung aendern                        |\n";
 		std::cout << "\t|  [2] Materialliste anzeigen                        |\n";
 		std::cout << "\t|  [3] Materialliste und Feldeinteilung so speichern |\n";
 		std::cout << "\t|  [4] Beenden                                       |\n";
@@ -236,5 +233,19 @@ int SubMenu(){
 		//Temp.erase(remove(Temp.begin(),Temp.end(),' '),Temp.end());
 		//Choice = lexical_cast<int,std::string>(Temp);
 	}while(Choice < 1 && Choice > 4);
+	return Choice;
+}
+
+int SubMenuChangeFieldDivision(){
+	int Choice=0;
+	//std::string Temp("");
+	std::cout << "\t\n\n\t+----------------------------------------------------+\n";
+	std::cout << "\t|  [1] Feld hinzufuegen                              |\n";
+	std::cout << "\t|  [2] Feld abziehen                                 |\n";
+	std::cout << "\t|  [3] Feld tauschen                                 |\n";
+	std::cout << "\t|  [4] Beenden                                       |\n";
+	std::cout << "\t+----------------------------------------------------+\n";
+	std::cout << "\n\n\tIhre Auswahl: ";
+	std::cin >> Choice;
 	return Choice;
 }

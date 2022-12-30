@@ -1,4 +1,4 @@
-#include "Logger.hxx"
+/*#include "Logger.hxx"
 
 
 const string CLogger::m_sFileName = "Log.txt";
@@ -24,7 +24,7 @@ void CLogger::Log(const char * format, ...){
     nLength = _vscprintf(format, args) + 1;
     sMessage = new char[nLength];
     vsprintf_s(sMessage, nLength, format, args);
-    //vsprintf(sMessage, format, args);
+    vsprintf(sMessage, format, args);
     m_Logfile <<CurrentDateTime() << ":\t";
     m_Logfile << sMessage << "\n";
     va_end(args);
@@ -52,4 +52,4 @@ CLogger& CLogger::operator<<(const string& sMessage){
         strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
         return buf;
     }
-
+*/

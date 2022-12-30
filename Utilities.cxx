@@ -1,5 +1,5 @@
 #include "Utilities.hxx"
-#include "Logger.hxx"
+//#include "Logger.hxx"
 #include "BaseScaff.hxx"
 #include <algorithm>
 
@@ -50,8 +50,7 @@ void Scaff::RemoveSpecialCharacter(std::string& InputString){
 int Scaff::AddDBEntry(const std::string& NameOfFile){
     std::ofstream DataBase("Baustellen\\DB.txt", std::ios_base::app);
     if(DataBase.bad()){
-        //Logger->Log("Couldnt open DataBase to add new entry...");
-        std::cerr<< "Couldnt open DataBase to add new entry...";
+        Logfile::getInstance().write("Couldnt open DataBase to add new entry...\n");
         return 1;   //1 indicates cant open file 
     }
     DataBase << NameOfFile << std::endl;
@@ -72,9 +71,10 @@ int Scaff::DeleteDBEntry(const std::string& NameOfFile){
             }
             else{
                 std::cout <<"Entry successfull deleted\n";
-                std::ofstream DataBase("Baustellen\\DB.txt",ios_base::trunc);
+                Logfile::getInstance().write("Entry successfull deleted\n");
+                std::ofstream DataBase("Baustellen\\DB.txt",std::ios_base::trunc);
                 if(DataBase.bad()){
-                    //Logger->Log("Couldnt open DataBase to delete entry...");
+                    Logfile::getInstance().write("Couldnt open DataBase to delete entry...\n");
                     return 2;
                 }
                 for(auto& a : AllConstructionSites)
@@ -89,7 +89,8 @@ int Scaff::DeleteDBEntry(const std::string& NameOfFile){
 std::vector<std::string> Scaff::GetAllDBEntrys(){
     std::ifstream DataBase("Baustellen\\DB.txt");
     if(DataBase.bad()){
-        //Logger->Log("Couldnt open DataBase to delete entry...");
+        std::cerr << "Couldnt open DataBase...\n" << std::endl;
+        Logfile::getInstance().write("Couldnt open DataBase...\n");
         exit(1);
     }
     std::string content("");
@@ -124,10 +125,10 @@ int Scaff::ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dime
 	std::string PathToFile(".\\Baustellen\\");
 	PathToFile += ConstructionSite;
     PathToFile += ".bin";
-	ifstream FileToRead;
-    FileToRead.open(PathToFile.c_str(),std::ios::in);
+	std::ifstream FileToRead;
+    FileToRead.open(PathToFile.c_str());
 	if(FileToRead.bad()){
-		LOGGER->Log("Couldt not open file to read Data\n");
+        Logfile::getInstance().write("Couldt not open file to read Data\n");
         return 1;
 	}
     FileToRead.seekg(0);
@@ -147,9 +148,9 @@ int Scaff::WriteCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dim
         FileToWrite.write((char*)&FilledScaff,sizeof(BaseComponents<int>));
         FileToWrite.write((char*)&CalcedData,sizeof(Dimensions));
         FileToWrite.close();
-        LOGGER->Log("File successfully saved\n");
+        Logfile::getInstance().write("File successfully saved\n");        
     }else{
-        LOGGER->Log("Could not open the file to store Data\n");
+        Logfile::getInstance().write("Could not open the file to store Data\n");
         FileToWrite.close();
         exit(1);
     }
@@ -324,8 +325,6 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
     ScaffToChange.SetUpdatetComponents(e_AltesFeld,e_NewField,DataToPrintScaff.Floors);
 }
 
-
-
 void Scaff::PrintFieldDivision(const Scaff::Dimensions& DataToPrint){
     double TestLength=0;
     for(int i=0;i<6;i++){
@@ -340,7 +339,7 @@ void Scaff::PrintFieldDivision(const Scaff::Dimensions& DataToPrint){
         }  
     }
     std::cout << "|\n"<< std::endl;
-    std::cout << "Gesamtl"<<ae<<"nge: " << TestLength << "m\n"<< std::endl;
-    std::cout << "Gew"<<ue<<"nschte L"<<ae<<"nge: " << DataToPrint.WishedLength<<"m\n"<<std::endl;
+    std::cout << "Gesamtlaenge: " << TestLength << "m\n"<< std::endl;
+    std::cout << "Gewuenschte Laenge: " << DataToPrint.WishedLength<<"m\n"<<std::endl;
 }
  

@@ -1,68 +1,39 @@
-#ifndef Logger_HXX
-#define Logger_HXX
+#include <ctime>
 #include <fstream>
-#include <iostream>
-#include <cstdarg>
+#include <mutex>
 #include <string>
-#include <time.h>
 
-using namespace std;
-
-#define LOGGER CLogger::GetLogger()
-
-/**
-*   Singleton Logger Class.
-*/
-
-class CLogger{
-
+class Logfile
+{
 public:
-    /**
-    *   Logs a message
-    *   @param sMessage message to be logged.
-    */
-    void Log(const std::string& sMessage);
-    /**
-    *   Variable Length Logger function
-    *   @param format string for the message to be logged.
-    */
-    void Log(const char * format, ...);
-    /**
-    *   << overloaded function to Logs a message
-    *   @param sMessage message to be logged.
-    */
-    CLogger& operator<<(const string& sMessage);
-    /**
-    *   Function to create the instance of logger class.
-    *   @return singleton object of Clogger class..
-    */
-    static CLogger* GetLogger();
+    static Logfile& getInstance(){
+        static Logfile instance;
+        return instance;
+    }
 
-    const std::string CurrentDateTime();
+    void write(const std::string& message){
+        
+        std::lock_guard<std::mutex> lock(m_mutex);
+
+        // Get the current time
+        std::time_t t = std::time(nullptr);
+        char timeStr[64];
+        std::strftime(timeStr, sizeof timeStr, "%Y-%m-%d %H:%M:%S", std::localtime(&t));
+
+        m_ofstream << timeStr << ": " << message << std::endl;
+    }
+
 private:
-    /**
-    *    Default constructor for the Logger class.
-    */
-    CLogger();
-    /**
-    *   copy constructor for the Logger class.
-    */
-    CLogger(const CLogger&){};             // copy constructor is private
-    /**
-    *   assignment operator for the Logger class.
-    */
-    CLogger& operator=(const CLogger&){ return *this; };  // assignment operator is private
-    /**
-    *   Log file name.
-    **/
-    static const std::string m_sFileName;
-    /**
-    *   Singleton logger class object pointer.
-    **/
-    static CLogger* m_pThis;
-    /**
-    *   Log file stream object.
-    **/
-    static ofstream m_Logfile;
+    Logfile()
+        : m_ofstream("log.txt",  std::ios::out | std::ios::app){}
+
+    ~Logfile(){
+        m_ofstream.close();
+    }
+
+    Logfile(const Logfile&) = delete;
+    Logfile& operator=(const Logfile&) = delete;
+
+    std::ofstream m_ofstream;
+    std::mutex m_mutex;
 };
-#endif

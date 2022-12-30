@@ -8,7 +8,7 @@
 
 #include "Menus.hxx"            //Recoding 99% done
 #include "BaseScaff.hxx"        //Recoding 99% done
-#include "Logger.hxx"           //Singleton pattern Logger Class to Log 
+//#include "Logger.hxx"           //Singleton pattern Logger Class to Log 
                                 //every problem that occurs while executing 
 #include "Utilities.hxx"
 
@@ -43,15 +43,21 @@ int main(int argc, char* argv[]){
         do{
             choice =SubMenu();
             switch(choice){
-			    case 1: Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff);
+			    case 1: 
+                    Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff);
 					Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
 					Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
 					Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					break;
-			    case 2: Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());break;
-			    case 3: CS = InputConstructionSiteName();
+			    case 2: 
+                    Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),
+                                            NewScaff.GetDimensions());
+                    break;
+			    case 3: 
+                    CS = InputConstructionSiteName();
 					WriteCalcedMaterial(NewScaff.GetComponents(), NewScaff.GetDimensions(),CS);
-					Scaff::AddDBEntry(CS);	break;
+					Scaff::AddDBEntry(CS);	
+                    break;
 			    case 4: exit(0);
 		    }
         }while(choice !=4);

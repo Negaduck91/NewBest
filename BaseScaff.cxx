@@ -255,7 +255,7 @@ void BaseScaff::FieldBase250L(double MaxLength){
             std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
             CalcedData.FL[0] = three;                       
             CalcedData.FL[1] = two_h;
-            this->CalcedData.AllFieldsL += 1;
+            //this->CalcedData.AllFieldsL += 1;
             this->CalcedData.ShortFieldsL = this->CalcedData.AllFieldsL - 1;
             this->CalcedData.LongFieldsL = 1;
             CalcedData.FieldRep[1][three]=1;
