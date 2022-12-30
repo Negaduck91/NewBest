@@ -269,6 +269,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
                 break;
 
         }
+
         /*std::cout <<"Feld das getauscht werden soll "<< e_AltesFeld<< std::endl;
 
 
@@ -306,7 +307,10 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
     std::cin >> OldField;                                                       
     if(OldField==1)e_OldField=ChosenFields[0];
     else e_OldField=ChosenFields[1];
-    std::cout <<"Feld das getauscht werden soll "<< e_OldField<< std::endl;*/
+    std::cout <<"Feld das getauscht werden soll "<< e_OldField<< std::endl;
+    */
+
+
     int NewField=0;
     std::cout << "Welches Feld soll dazu kommen: "<< std::endl;
     std::cout <<"[0]  0,73m Feld\n" <<

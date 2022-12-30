@@ -47,6 +47,7 @@ BaseScaff::BaseScaff(const UserInput &Input){
                                 this->CalcedData.LongFieldsL=
                                 this->CalcedData.ShortFieldsL=0;
     //CalcedData.FI = {first,second,third,fourth,fifth,sixth};
+    this->CalcedData.WishedLength = Input.Length;
     CalcedData.FL[0] =  three_h;
     CalcedData.FL[2] =  three_h;
     CalcedData.FL[1] =  two_h;
