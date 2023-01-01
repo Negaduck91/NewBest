@@ -232,6 +232,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
         //Convert our Input to enum to work with. So we can index our array accordingly
         enum Scaff::FieldLength e_NewField1=static_cast<FieldLength>(NewField1);
         DataToPrintScaff.FieldRep[1][e_NewField1]+=1;
+        ScaffToChange.SetExtraField(e_NewField1);
         ScaffToChange.SetDimensions(DataToPrintScaff);
         ScaffToChange.AddField(e_NewField1, DataToPrintScaff.Floors);
         ScaffToChange.SetAllFieldsL(ScaffToChange.GetAllFieldsL()+1);
@@ -255,7 +256,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
                 case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[0]=one_h;break;
                 case one: std::cout << "1.09m Feld\n";GezeigteFelder[0]=one;break;
                 case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[0]=one;break;
-                case three_h: std::cout << "We only have one FIeld\n"<< std::endl;break;
+                case three_h: std::cout << "We only have one Field\n"<< std::endl;break;
             }
         }else{
             for(int i=0;i<count;i++){
@@ -267,7 +268,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
                     case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[i]=one_h;break;
                     case one: std::cout << "1.09m Feld\n";GezeigteFelder[i]=one;break;
                     case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[i]=one;break;
-                    case three_h: std::cout << "We only have one FIeld\n"<< std::endl; break;
+                    case three_h: std::cout << "We only have one Field\n"<< std::endl; break;
                 }     
             }
         }
@@ -370,7 +371,9 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
     std::cin >> NewField1;
     //Convert our Input to enum to work with. So we can index our array accordingly
     enum Scaff::FieldLength e_NewField1=static_cast<FieldLength>(NewField1);
+    if(e_NewField1 != e_AltesFeld) ScaffToChange.SetExtraField(e_NewField1);
     DataToPrintScaff.FieldRep[1][e_NewField1]+=1;
+    DataToPrintScaff.FieldRep[1][e_AltesFeld]-=1;
     ScaffToChange.SetDimensions(DataToPrintScaff);
     ScaffToChange.SwapFields(e_AltesFeld,e_NewField1, DataToPrintScaff.Floors);
 

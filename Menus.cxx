@@ -8,6 +8,7 @@
 #include "BaseScaff.hxx"
 //#include "Logger.hxx"
 #include "Utilities.hxx"
+#include  <bits/stdc++.h>
 
 
 
@@ -204,8 +205,9 @@ void NewBaseScaff(const UserInput& Input){
 std::string InputConstructionSiteName(void){
 	std::cout << "\nGeben Sie den Baustellennamen ein:  " << std::endl;
 	std::string temp("");
-	std::getline(std::cin,temp);
-	if(temp=="")exit(0);
+	
+	std::getline(std::cin >> std::ws,temp);
+	if(temp=="")exit(-1);
 	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
 	return temp;
 }

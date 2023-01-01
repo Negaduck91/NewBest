@@ -80,3 +80,9 @@
 
 2022-11-21.17:09:05:	Deleting File complete.
 
+2023-01-01 21:09:29: Could not open the file to store Data
+
+2023-01-01 21:13:52: Could not open the file to store Data
+
+2023-01-01 21:15:48: File successfully saved
+
