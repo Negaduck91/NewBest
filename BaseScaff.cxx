@@ -391,16 +391,33 @@ void BaseScaff::CalcTechnicalData(){
 }
 
 void BaseScaff::SetUpdatetComponents(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors){
+    
+
+    
+}
+
+int BaseScaff::SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors){
+    
+}
+
+int BaseScaff::SubField(FieldLength FieldToSub, int Floors){
+    int i_ToeBoard = Floors;
+    int i_Planks = Floors*2;
+    int i_SideGuard =(Floors*2)+1;    
+    
+    Material.UsedPlanks.alu[FieldToSub] -= i_Planks;
+    Material.SideGuard[FieldToSub] -= i_SideGuard;
+    Material.ToeBoard[FieldToSub] -= i_ToeBoard;
+}
+    
+int BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
     int i_ToeBoard = Floors;
     int i_Planks = Floors*2;
     int i_SideGuard =(Floors*2)+1;
-    Material.SideGuard[FieldToSub] -= i_SideGuard;
-    Material.SideGuard[FieldToAdd] += i_SideGuard;
-    Material.ToeBoard[FieldToSub] -= i_ToeBoard;
-    Material.ToeBoard[FieldToAdd] += i_ToeBoard;
-    Material.UsedPlanks.alu[FieldToSub] -= i_Planks;
-    Material.UsedPlanks.alu[FieldToAdd] += i_Planks;
 
+    Material.UsedPlanks.alu[FieldToAdd] += i_Planks;
+    Material.SideGuard[FieldToAdd] += i_SideGuard;
+    Material.ToeBoard[FieldToAdd] += i_ToeBoard;
 }
 
 void BaseScaff::SetDimensions(const Dimensions& DataToSet){

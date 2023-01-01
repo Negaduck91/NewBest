@@ -154,6 +154,10 @@ public:
     inline BaseComponents<int> GetComponents(void){return this->Material;}
     inline Dimensions GetDimensions(void){return this->CalcedData;}
 
+    int SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
+    int SubField(FieldLength FieldToSub, int Floors);
+    int AddField(FieldLength FieldToAdd, int Floors);
+
 
    
 
