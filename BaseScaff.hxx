@@ -148,7 +148,6 @@ public:
     */
 
     void SetDimensions(const Dimensions& DataToSet);
-    void SetUpdatetComponents(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
     void SetExtraField(FieldLength FieldToAdd);
 
     inline BaseComponents<int> GetComponents(void){return this->Material;}

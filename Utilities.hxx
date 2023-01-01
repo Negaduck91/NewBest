@@ -37,7 +37,7 @@ namespace Scaff{
     void PrintFieldDivision(const Scaff::Dimensions& DataToPrint);
     //void PrintUpdatedFieldDivision(const Scaff::Dimensions& DataToPrint);
 
-    void ChangeFieldDivision(Scaff::Dimensions DataToPrintScaff, BaseScaff& ScaffToChange);
+    void ChangeFieldDivision(Scaff::Dimensions DataToPrintScaff, BaseScaff& ScaffToChange,int SubOrAddOrSwap);
 
     //void UpdateMaterialList(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
 

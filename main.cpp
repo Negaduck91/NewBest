@@ -39,16 +39,36 @@ int main(int argc, char* argv[]){
         Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
         Scaff::PrintFieldDivision(NewScaff.GetDimensions());
         std::string CS("");
-        int choice =0;
+        int choice, choice2=0;
         do{
             choice =SubMenu();
             switch(choice){
 			    case 1: 
-                    Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff);
-					Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
-					Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
-					Scaff::PrintFieldDivision(NewScaff.GetDimensions());
-					break;
+                
+                    choice2 = SubMenuChangeFieldDivision();
+                    switch(choice2){
+                        case1:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,1);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case2:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,2);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case3:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,3);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case4:
+                            exit(0);
+                    }
+                
 			    case 2: 
                     Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),
                                             NewScaff.GetDimensions());

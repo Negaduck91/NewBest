@@ -161,16 +161,41 @@ void NewBaseScaff(const UserInput& Input){
 		Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 		do{
 			switch(SubMenu()){
-				case 1: Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff);
-					Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
-					Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
-					Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+
+				case 1: 
+					switch(SubMenuChangeFieldDivision()){
+                        case1:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,1);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case2:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,2);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case3:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,3);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case4:
+                            exit(0);
+                    }
 					break;
-				case 2: Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());break;
-				case 3: NCS = InputConstructionSiteName();
+				case 2: 
+					Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());
+					break;
+				case 3: 
+					NCS = InputConstructionSiteName();
 					WriteCalcedMaterial(NewScaff.GetComponents(), NewScaff.GetDimensions(),NCS);
-					AddDBEntry(NCS);	break;
-				case 4: exit(0);
+					AddDBEntry(NCS);	
+					break;
+				case 4: 
+					exit(0);
 			}
 			
 		}while(true);
