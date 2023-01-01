@@ -154,9 +154,9 @@ public:
     inline Dimensions GetDimensions(void){return this->CalcedData;}
     inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
 
-    int SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
-    int SubField(FieldLength FieldToSub, int Floors);
-    int AddField(FieldLength FieldToAdd, int Floors);
+    void SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
+    void SubField(FieldLength FieldToSub, int Floors);
+    void AddField(FieldLength FieldToAdd, int Floors);
 
 
    

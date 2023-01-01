@@ -391,12 +391,12 @@ void BaseScaff::CalcTechnicalData(){
 }
 
 
-int BaseScaff::SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors){
+void BaseScaff::SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors){
     SubField(FieldToSub,Floors);
     AddField(FieldToAdd,Floors);
 }
 
-int BaseScaff::SubField(FieldLength FieldToSub, int Floors){
+void BaseScaff::SubField(FieldLength FieldToSub, int Floors){
     int i_ToeBoard = Floors;
     int i_Planks = Floors*2;
     int i_SideGuard =(Floors*2)+1;
@@ -407,7 +407,7 @@ int BaseScaff::SubField(FieldLength FieldToSub, int Floors){
     Material.ToeBoard[FieldToSub] -= i_ToeBoard;
 }
     
-int BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
+void BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
     int i_ToeBoard = Floors;
     int i_Planks = Floors*2;
     int i_SideGuard =(Floors*2)+1;
