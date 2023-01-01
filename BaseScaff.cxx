@@ -329,9 +329,10 @@ void BaseScaff::FieldBase250L(double MaxLength){
 
 void BaseScaff::CalcMaterial(){
 
-    //FIrst of all we go to calculate the frames
-    int i_ToeBoard = CalcedData.Floors;
     int i_Planks = CalcedData.Floors*2;
+    if(CalcedData.FW==W09)i_Planks = CalcedData.Floors*3;
+    
+    int i_ToeBoard = CalcedData.Floors;
     int i_SideGuard =(CalcedData.Floors*2)+1;
     for(int i =0;i<6;i++){
         Material.SideGuard[i] = CalcedData.FieldRep[1][i] * i_SideGuard;
