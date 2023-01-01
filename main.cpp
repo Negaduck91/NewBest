@@ -7,9 +7,7 @@
 
 
 #include "Menus.hxx"            //Recoding 99% done
-#include "BaseScaff.hxx"        //Recoding 99% done
-//#include "Logger.hxx"           //Singleton pattern Logger Class to Log 
-                                //every problem that occurs while executing 
+#include "BaseScaff.hxx"        //Recoding 99% done 
 #include "Utilities.hxx"
 
 //
@@ -39,35 +37,28 @@ int main(int argc, char* argv[]){
         Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
         Scaff::PrintFieldDivision(NewScaff.GetDimensions());
         std::string CS("");
-        int choice, choice2=0;
+        int choice=0;
         do{
             choice =SubMenu();
             switch(choice){
 			    case 1: 
-                
-                    choice2 = SubMenuChangeFieldDivision();
-                    switch(choice2){
+                    switch(SubMenuChangeFieldDivision()){
                         case 1:
                             Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,1);
-					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
-					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
-					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					        break;
                         case 2:
                             Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,2);
-					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
-					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
-					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					        break;
                         case 3:
                             Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,3);
-					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
-					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
-					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					        break;
                         case 4:
                             exit(0);
                     }
+                    Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+			        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+				    Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+                    break;
                 
 			    case 2: 
                     Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),
@@ -83,34 +74,27 @@ int main(int argc, char* argv[]){
         }while(choice !=4);
     exit(0);
     }
+
+    
 	Scaff::UserInput Input;
-    //switch(MainMenu()) {
-		//Normal scaffold without extensions
-    //case 1:
         switch(BaseScaffMenu()) {
             //CONSTRUCTION
 			//Then get some User Data required to calculate the scaff
-        case 1:
-            GetMontageInput(Input);
-			NewBaseScaff(Input);
-			break;
+            case 1:
+                GetMontageInput(Input);
+			    NewBaseScaff(Input);
+			    break;
 
 			//DISMANTLING
             //Do we want to delete the File from our 
             //Data base or do we just want to look it up 
             //for some reason??
-        case 2:
-            if(GetDismantlingInput()==1){
-                std::cerr << "Datei konnte nicht gel"<<oe<<"scht werden" << std::endl;
-            }
+            case 2:
+                if(GetDismantlingInput()==1){
+                    std::cerr << "Datei konnte nicht geloescht werden" << std::endl;
+
+                }
             break;
         }
-        //break;
-
-        //Here the User wants an Allround Scaffold
-    //case 2: //new_modul();
-            //break;
-
-    //}
     return 0;
 }

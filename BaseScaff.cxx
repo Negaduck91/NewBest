@@ -40,8 +40,6 @@ BaseScaff::BaseScaff(double Length,double Height){
 	CalcMaterial();
 }
 
-
-
 BaseScaff::BaseScaff(const UserInput &Input){
 	this->CalcedData.Floors =   this->CalcedData.AllFieldsL =
                                 this->CalcedData.LongFieldsL=
@@ -229,7 +227,7 @@ void BaseScaff::FieldBase250L(double MaxLength){
     
 
     //These are the import values we need to calculate the 
-    //amount of Fields
+    //amount of Fields with
     int ConvertedLength = MaxLength * 100 + 1;
     this->CalcedData.AllFieldsL = ConvertedLength / 257;
     CalcedData.RestLength = ConvertedLength % 257;
@@ -327,10 +325,6 @@ void BaseScaff::FieldBase250L(double MaxLength){
     }
     CalcTechnicalData();
     
-    //for(int i =0; i<6;i++){
-    //   test = CalcedData.FieldRep[1][i] * CalcedData.FI[i];
-        //std::cout << test << std::endl;
-    //}
 }
 
 void BaseScaff::CalcMaterial(){
@@ -387,9 +381,7 @@ void BaseScaff::CalcTechnicalData(){
     this->CalcedData.Squaremetre = (double)this->CalcedData.CalcedLength * (this->CalcedData.Height+1.0);
     this->CalcedData.Weight =  (CalcedData.Squaremetre*10)/1000;
     this->CalcedData.MaxStalkLoad = (CalcedData.Height +1) * 58;
-    
 }
-
 
 void BaseScaff::SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors){
     SubField(FieldToSub,Floors);
@@ -401,10 +393,15 @@ void BaseScaff::SubField(FieldLength FieldToSub, int Floors){
     int i_Planks = Floors*2;
     int i_SideGuard =(Floors*2)+1;
         
-    
     Material.UsedPlanks.alu[FieldToSub] -= i_Planks;
     Material.SideGuard[FieldToSub] -= i_SideGuard;
     Material.ToeBoard[FieldToSub] -= i_ToeBoard;
+    Material.Frames[3] -= Floors;
+    if(Material.Frames[0]!=0)Material.Frames[0]-=1;
+    else if(Material.Frames[1]!=0)Material.Frames[1]-=1;
+    else if(Material.Frames[2]!=0)Material.Frames[2]-=1;
+
+    
 }
     
 void BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
@@ -415,7 +412,10 @@ void BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
     Material.UsedPlanks.alu[FieldToAdd] += i_Planks;
     Material.SideGuard[FieldToAdd] += i_SideGuard;
     Material.ToeBoard[FieldToAdd] += i_ToeBoard;
-
+    Material.Frames[3] += Floors;
+    if(Material.Frames[0]!=0)Material.Frames[0]+=1;
+    else if(Material.Frames[1]!=0)Material.Frames[1]+=1;
+    else if(Material.Frames[2]!=0)Material.Frames[2]+=1;
 }
 
 void BaseScaff::SetDimensions(const Dimensions& DataToSet){

@@ -16,7 +16,6 @@ void Scaff::PrintKeyData(std::ostream* WhereToPrint,const Dimensions& DataToPrin
 }
 
 
-
 int Scaff::EraseFile(const char *FileName) {
    unsigned long size;
    FILE *Remove=fopen(FileName, "w+b");
@@ -380,10 +379,6 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
     }
     return;
 }
-
-
-
-
 
 void Scaff::PrintFieldDivision(const Scaff::Dimensions& DataToPrint){
     double TestLength=0;
