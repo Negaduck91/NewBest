@@ -218,41 +218,60 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
         if((ScaffToChange.GetDimensions()).FL[i] != three_h)
             count++;
     }
-    if(SubOrAddOrSwap ==1)std::cout << "Welches Feld wollen Sie hinzufuegen "<< std::endl;
-    if(SubOrAddOrSwap ==2)std::cout << "Welches Feld wollen Sie wegnehmen "<< std::endl;
-    if(SubOrAddOrSwap ==3)std::cout << "Welches Feld wollen Sie tauschen "<< std::endl;
-    enum Scaff::FieldLength GezeigteFelder[count],e_AltesFeld;
-    int AltesFeld=0;
-    /*
+    if(SubOrAddOrSwap ==1){         //Want to add a field
+        std::cout << "Welches Feld wollen Sie hinzufuegen "<< std::endl;
+        std::cout <<
+                "[0]  0,73m Feld\n" <<
+                "[1]  1,09m Feld\n" <<
+                "[2]  1,57m Feld\n" <<
+                "[3]  2,07m Feld\n" <<
+                "[4]  2,57m Feld\n" <<
+                "[5]  3,07m Feld\n" << std::endl;
+        int NewField1=0;
+        std::cin >> NewField1;
+        //Convert our Input to enum to work with. So we can index our array accordingly
+        enum Scaff::FieldLength e_NewField1=static_cast<FieldLength>(NewField1);
+        DataToPrintScaff.FieldRep[1][e_NewField1]+=1;
+        ScaffToChange.SetDimensions(DataToPrintScaff);
+        ScaffToChange.AddField(e_NewField1, DataToPrintScaff.Floors);
+        ScaffToChange.SetAllFieldsL(ScaffToChange.GetAllFieldsL()+1);
+        return;
+
+    }else if(SubOrAddOrSwap ==2){   //Want to sub a field
+        std::cout << "Welches Feld wollen Sie wegnehmen "<< std::endl;
+    
+        enum Scaff::FieldLength GezeigteFelder[7],e_AltesFeld;
+        int AltesFeld=0;
+        /*
         First we check if we have more than one field calculated and give accordingly
         to that output.
-    */
-    if(count ==1){
-        std::cout << "[0] ";
-        switch((ScaffToChange.GetDimensions()).FL[1]){
-            case three: std::cout << "3.07m Feld\n";GezeigteFelder[0]=three;break;
-            case two_h: std::cout << "2.57m Feld\n";GezeigteFelder[0]=two_h;break;
-            case two: std::cout << "2.07m Feld\n";GezeigteFelder[0]=two;break;
-            case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[0]=one_h;break;
-            case one: std::cout << "1.09m Feld\n";GezeigteFelder[0]=one;break;
-            case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[0]=one;break;
-            case three_h: std::cout << "We only have one FIeld\n"<< std::endl;break;
+        */
+        if(count ==1){
+            std::cout << "[0] ";
+            switch((ScaffToChange.GetDimensions()).FL[1]){
+                case three: std::cout << "3.07m Feld\n";GezeigteFelder[0]=three;break;
+                case two_h: std::cout << "2.57m Feld\n";GezeigteFelder[0]=two_h;break;
+                case two: std::cout << "2.07m Feld\n";GezeigteFelder[0]=two;break;
+                case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[0]=one_h;break;
+                case one: std::cout << "1.09m Feld\n";GezeigteFelder[0]=one;break;
+                case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[0]=one;break;
+                case three_h: std::cout << "We only have one FIeld\n"<< std::endl;break;
+            }
+        }else{
+            for(int i=0;i<count;i++){
+                std::cout << "["<<i<<"] ";
+                switch((ScaffToChange.GetDimensions()).FL[i]){
+                    case three: std::cout << "3.07m Feld\n";GezeigteFelder[i]=three;break;
+                    case two_h: std::cout << "2.57m Feld\n";GezeigteFelder[i]=two_h;break;
+                    case two: std::cout << "2.07m Feld\n";GezeigteFelder[i]=two;break;
+                    case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[i]=one_h;break;
+                    case one: std::cout << "1.09m Feld\n";GezeigteFelder[i]=one;break;
+                    case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[i]=one;break;
+                    case three_h: std::cout << "We only have one FIeld\n"<< std::endl; break;
+                }     
+            }
         }
-    }else{
-        for(int i=0;i<count;i++){
-            std::cout << "["<<i<<"] ";
-            switch((ScaffToChange.GetDimensions()).FL[i]){
-                case three: std::cout << "3.07m Feld\n";GezeigteFelder[i]=three;break;
-                case two_h: std::cout << "2.57m Feld\n";GezeigteFelder[i]=two_h;break;
-                case two: std::cout << "2.07m Feld\n";GezeigteFelder[i]=two;break;
-                case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[i]=one_h;break;
-                case one: std::cout << "1.09m Feld\n";GezeigteFelder[i]=one;break;
-                case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[i]=one;break;
-                case three_h: std::cout << "We only have one FIeld\n"<< std::endl; break;
-            }     
-        }
-    }
-    std::cout << "Ihre Auswahl: ";
+        std::cout << "Ihre Auswahl: ";
         std::cin >> AltesFeld;     
         switch(AltesFeld){
             case 0:
@@ -275,42 +294,93 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
                 break;
 
         }
-    if(SubOrAddOrSwap==1){
-        //Want to add a field
-        DataToPrintScaff.FieldRep[1][e_AltesFeld]+=1;
-        ScaffToChange.SetDimensions(DataToPrintScaff);
-        ScaffToChange.AddField(e_AltesFeld, DataToPrintScaff.Floors);
-    }else if(SubOrAddOrSwap==2){
-        //Want su sub a field
         DataToPrintScaff.FieldRep[1][e_AltesFeld]-=1;
         ScaffToChange.SetDimensions(DataToPrintScaff);
         ScaffToChange.SubField(e_AltesFeld, DataToPrintScaff.Floors);
-    }else if(SubOrAddOrSwap==3){
-        //Want to swap Fields
-        int NewField=0;
-        std::cout << "Welches Feld soll dazu kommen: "<< std::endl;
-        std::cout <<
+        ScaffToChange.SetAllFieldsL(ScaffToChange.GetAllFieldsL()-1);
+        return;
+    }else if(SubOrAddOrSwap ==3){   //Want to swap fields
+
+        std::cout << "Welches Feld wollen Sie tauschen "<< std::endl;
+        enum Scaff::FieldLength GezeigteFelder[7],e_AltesFeld;
+        int AltesFeld=0;
+        /*
+        First we check if we have more than one field calculated and give accordingly
+        to that output.
+        */
+        if(count ==1){
+            std::cout << "[0] ";
+            switch((ScaffToChange.GetDimensions()).FL[1]){
+                case three: std::cout << "3.07m Feld\n";GezeigteFelder[0]=three;break;
+                case two_h: std::cout << "2.57m Feld\n";GezeigteFelder[0]=two_h;break;
+                case two: std::cout << "2.07m Feld\n";GezeigteFelder[0]=two;break;
+                case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[0]=one_h;break;
+                case one: std::cout << "1.09m Feld\n";GezeigteFelder[0]=one;break;
+                case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[0]=one;break;
+                case three_h: std::cout << "We only have one FIeld\n"<< std::endl;break;
+            }
+        }else{
+            for(int i=0;i<count;i++){
+                std::cout << "["<<i<<"] ";
+                switch((ScaffToChange.GetDimensions()).FL[i]){
+                    case three: std::cout << "3.07m Feld\n";GezeigteFelder[i]=three;break;
+                    case two_h: std::cout << "2.57m Feld\n";GezeigteFelder[i]=two_h;break;
+                    case two: std::cout << "2.07m Feld\n";GezeigteFelder[i]=two;break;
+                    case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[i]=one_h;break;
+                    case one: std::cout << "1.09m Feld\n";GezeigteFelder[i]=one;break;
+                    case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[i]=one;break;
+                    case three_h: std::cout << "We only have one FIeld\n"<< std::endl; break;
+                }     
+            }
+        }
+        std::cout << "Ihre Auswahl: ";
+        std::cin >> AltesFeld;     
+        switch(AltesFeld){
+            case 0:
+                e_AltesFeld = GezeigteFelder[0];
+                break;
+            case 1:
+                e_AltesFeld = GezeigteFelder[1];
+                break;
+            case 2:
+                e_AltesFeld = GezeigteFelder[2];
+                break;
+            case 3:
+                e_AltesFeld = GezeigteFelder[3];
+                break;
+            case 4:
+                e_AltesFeld = GezeigteFelder[4];
+                break;
+            case 5:
+                e_AltesFeld = GezeigteFelder[5];
+                break;
+        }
+    
+
+
+    std::cout << "Welches Feld wollen Sie hinzufuegen "<< std::endl;
+    std::cout <<
                 "[0]  0,73m Feld\n" <<
                 "[1]  1,09m Feld\n" <<
                 "[2]  1,57m Feld\n" <<
                 "[3]  2,07m Feld\n" <<
                 "[4]  2,57m Feld\n" <<
                 "[5]  3,07m Feld\n" << std::endl;
-        std::cin >> NewField;
-        //Convert our Input to enum to work with. So we can index our array accordingly
-        enum Scaff::FieldLength e_NewField=static_cast<FieldLength>(NewField);
-        if(e_NewField != e_AltesFeld) ScaffToChange.SetExtraField(e_NewField);
-        DataToPrintScaff.FieldRep[1][e_AltesFeld]-=1;
-        DataToPrintScaff.FieldRep[1][e_NewField]+=1;
-    
-        ScaffToChange.SetDimensions(DataToPrintScaff);
-        ScaffToChange.SwapFields(e_AltesFeld,e_NewField,DataToPrintScaff.Floors);
-        return;
+    int NewField1=0;
+    std::cin >> NewField1;
+    //Convert our Input to enum to work with. So we can index our array accordingly
+    enum Scaff::FieldLength e_NewField1=static_cast<FieldLength>(NewField1);
+    DataToPrintScaff.FieldRep[1][e_NewField1]+=1;
+    ScaffToChange.SetDimensions(DataToPrintScaff);
+    ScaffToChange.SwapFields(e_AltesFeld,e_NewField1, DataToPrintScaff.Floors);
+
     }
-
-
-    
+    return;
 }
+
+
+
+
 
 void Scaff::PrintFieldDivision(const Scaff::Dimensions& DataToPrint){
     double TestLength=0;

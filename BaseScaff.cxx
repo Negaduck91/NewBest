@@ -399,7 +399,8 @@ int BaseScaff::SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Flo
 int BaseScaff::SubField(FieldLength FieldToSub, int Floors){
     int i_ToeBoard = Floors;
     int i_Planks = Floors*2;
-    int i_SideGuard =(Floors*2)+1;    
+    int i_SideGuard =(Floors*2)+1;
+        
     
     Material.UsedPlanks.alu[FieldToSub] -= i_Planks;
     Material.SideGuard[FieldToSub] -= i_SideGuard;
@@ -414,7 +415,7 @@ int BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
     Material.UsedPlanks.alu[FieldToAdd] += i_Planks;
     Material.SideGuard[FieldToAdd] += i_SideGuard;
     Material.ToeBoard[FieldToAdd] += i_ToeBoard;
-    
+
 }
 
 void BaseScaff::SetDimensions(const Dimensions& DataToSet){

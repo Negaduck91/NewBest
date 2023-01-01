@@ -141,17 +141,18 @@ public:
     inline void SetShortFieldsL(int ShortFields){this->CalcedData.ShortFieldsL=ShortFields;}
     inline void SetFloors(int CalcedFloors){ this->CalcedData.Floors    = CalcedFloors;}
 
-    inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
     inline unsigned int GetLongFieldsL(){return this->CalcedData.LongFieldsL;}
     inline unsigned int GetShortFieldsL(){return this->CalcedData.ShortFieldsL;}
     inline unsigned int GetFloors(){return this->CalcedData.Floors;}
     */
 
+    inline void SetAllFieldsL(int FieldsToAdd){this->CalcedData.AllFieldsL=FieldsToAdd;}
     void SetDimensions(const Dimensions& DataToSet);
     void SetExtraField(FieldLength FieldToAdd);
 
     inline BaseComponents<int> GetComponents(void){return this->Material;}
     inline Dimensions GetDimensions(void){return this->CalcedData;}
+    inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
 
     int SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
     int SubField(FieldLength FieldToSub, int Floors);

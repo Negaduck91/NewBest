@@ -47,25 +47,25 @@ int main(int argc, char* argv[]){
                 
                     choice2 = SubMenuChangeFieldDivision();
                     switch(choice2){
-                        case1:
+                        case 1:
                             Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,1);
 					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
 					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
 					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					        break;
-                        case2:
+                        case 2:
                             Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,2);
 					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
 					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
 					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					        break;
-                        case3:
+                        case 3:
                             Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,3);
 					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
 					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
 					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					        break;
-                        case4:
+                        case 4:
                             exit(0);
                     }
                 
