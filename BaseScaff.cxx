@@ -397,7 +397,8 @@ void BaseScaff::SetUpdatetComponents(FieldLength FieldToSub,FieldLength FieldToA
 }
 
 int BaseScaff::SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors){
-    
+    SubField(FieldToSub,Floors);
+    AddField(FieldToAdd,Floors);
 }
 
 int BaseScaff::SubField(FieldLength FieldToSub, int Floors){
