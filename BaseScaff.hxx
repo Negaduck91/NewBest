@@ -129,7 +129,7 @@ private:
 public:
     BaseScaff()=default;
     //This one is used for a quick field calculation
-	BaseScaff(double WishedLength, double WishedHeight);
+	BaseScaff(double WishedLength, double WishedHeight, FieldIndicator BaseField = fifth);
     //This one is used if we get full input from the user
 	BaseScaff(const UserInput &Input);
     ~BaseScaff()=default;
@@ -164,7 +164,7 @@ public:
 private:
 
     void CalcFloors(double WishedHeight);
-    void CalcFieldsL(double MaxLength);
+    void CalcFieldsL(double MaxLength, FieldIndicator BaseField = fifth);
     void FieldBase300L(double MaxLength);
     void FieldBase250L(double MaxLength);
     void CalcMaterial();

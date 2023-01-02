@@ -3,7 +3,7 @@
 
 using namespace Scaff;
 
-BaseScaff::BaseScaff(double Length,double Height){
+BaseScaff::BaseScaff(double Length,double Height, FieldIndicator BaseField){
     this->CalcedData.Floors = this->CalcedData.AllFieldsL = 
                     this->CalcedData.LongFieldsL=this->CalcedData.ShortFieldsL=0;
     CalcedData.RestHeight = CalcedData.RestLength = 0.0L;
@@ -35,7 +35,7 @@ BaseScaff::BaseScaff(double Length,double Height){
     this->CalcedData.FieldRep[1][5]=0;
     this->CalcedData.FieldRep[1][6]=0;
 
-	CalcFieldsL(Length);
+	CalcFieldsL(Length,BaseField);
 	CalcFloors(Height);
 	CalcMaterial();
 }
@@ -125,10 +125,10 @@ void BaseScaff::CalcFloors(double WishedHeight){
 //Just a function to decide which 
 //mainfield is used and which algorithm
 //we use to calculate the fields
-void BaseScaff::CalcFieldsL(double MaxLength){
-    if(CalcedData.FL[1] == three)
+void BaseScaff::CalcFieldsL(double MaxLength, FieldIndicator BaseField){
+    if(BaseField == sixth)
         FieldBase300L(MaxLength);
-    else if (CalcedData.FL[1] == two_h)
+    else if (BaseField == fifth)
         FieldBase250L(MaxLength);
     else
         FieldBase250L(MaxLength);
@@ -212,6 +212,7 @@ void BaseScaff::FieldBase300L(double MaxLength){
     } else{
 
     } 
+    CalcTechnicalData();
 }
 
 /*
@@ -328,19 +329,14 @@ void BaseScaff::FieldBase250L(double MaxLength){
 }
 
 void BaseScaff::CalcMaterial(){
-
     int i_Planks = CalcedData.Floors*2;
     if(CalcedData.FW==W09)i_Planks = CalcedData.Floors*3;
-    
     int i_ToeBoard = CalcedData.Floors;
     int i_SideGuard =(CalcedData.Floors*2)+1;
     for(int i =0;i<6;i++){
         Material.SideGuard[i] = CalcedData.FieldRep[1][i] * i_SideGuard;
-        //Material.SideGuard[i] = i_SideGuard;
         Material.ToeBoard[i] =CalcedData.FieldRep[1][i] * i_ToeBoard;
-        //Material.ToeBoard[i] += i_ToeBoard;
         Material.UsedPlanks.alu[i] = CalcedData.FieldRep[1][i] * i_Planks;
-        //Material.UsedPlanks.alu[i] += i_Planks;
     }
     Material.Frames[3] = (BaseScaff::CalcedData.AllFieldsL+1)*(BaseScaff::CalcedData.Floors);
     if(CalcedData.FC != normal){
@@ -351,31 +347,8 @@ void BaseScaff::CalcMaterial(){
 	//and then calculate the other base components
     Material.Dia[0] = ( (int)( this->CalcedData.AllFieldsL / 5)+1)* this->CalcedData.Floors;
     if(this->CalcedData.AllFieldsL <= 5)Material.Dia[0] = this->CalcedData.Floors;
-        
-    
-        
-        //Material.SideGuard[CalcedData.FL[1]]     = ((this->CalcedData.AllFieldsL*2*this->CalcedData.Floors)+this->CalcedData.AllFieldsL)-(((this->CalcedData.Floors*2)+1) * this->CalcedData.ShortFieldsL);
-        //Material.SideGuard[CalcedData.FL[0]]    = (2*this->CalcedData.Floors+1)* this->CalcedData.ShortFieldsL;
-        //Material.ToeBoard[CalcedData.FL[1]]  = (this->CalcedData.Floors * this->CalcedData.AllFieldsL) - ( this->CalcedData.Floors * this->CalcedData.ShortFieldsL);
-        //Material.ToeBoard[CalcedData.FL[0]] = this->CalcedData.Floors * this->CalcedData.ShortFieldsL;
-        Material.BaseJack 		 = (this->CalcedData.AllFieldsL+1)*2;
-        //Material.Ladder[CalcedData.FL[1]]      		 = this->CalcedData.Floors;
-       
-        //switch(this->PlankChoice) {
-        //case 1:
-            //Material.UsedPlanks.alu[CalcedData.FL[0]]   = (( this->CalcedData.Floors * this->CalcedData.FW ) * this->CalcedData.ShortFieldsL);
-            //Material.UsedPlanks.alu[CalcedData.FL[1]]   = (( this->CalcedData.AllFieldsL * this->CalcedData.Floors)*CalcedData.FW) - (( this->CalcedData.Floors * CalcedData.FW ) * this->CalcedData.ShortFieldsL);
-            /*break;
-        case 2:
-            Material.UsedPlanks.steel[CalcedData.FL[0]]   = (( this->CalcedData.Floors * CalcedData.FW ) * this->CalcedData.ShortFieldsL);
-            Material.UsedPlanks.steel[CalcedData.FL[1]]   = (( this->CalcedData.AllFieldsL * this->CalcedData.Floors)*CalcedData.FW) - (( this->CalcedData.Floors * CalcedData.FW ) * this->CalcedData.ShortFieldsL);
-            break;
-        case 3:
-            Material.UsedPlanks.wodden[CalcedData.FL[0]]   = (( this->CalcedData.Floors * CalcedData.FW ) * this->CalcedData.ShortFieldsL);
-            Material.UsedPlanks.wodden[CalcedData.FL[1]]   = (( this->CalcedData.AllFieldsL * this->CalcedData.Floors)*CalcedData.FW) - (( this->CalcedData.Floors * CalcedData.FW ) * this->CalcedData.ShortFieldsL);
-            break;
-        }*/
-        CalcTechnicalData();
+        Material.BaseJack = (this->CalcedData.AllFieldsL+1)*2;
+    CalcTechnicalData();
 }
 
 void BaseScaff::CalcTechnicalData(){

@@ -25,14 +25,18 @@ int main(int argc, char* argv[]){
     //If the user inputs two doubles we assume 
     //the first is the length of the Scaffold
     //and the second value is the height 
-    if(argc == 3 ){
+    if(argc == 4 ){
         double L,H=0;
+        signed int WishedBaseField=0;
         std::vector<std::string> args;
         args.push_back(argv[1]);        //Store the program arguments in a way that we can
         args.push_back(argv[2]);        //conviently convert it in a type we accepted it to be 
+        args.push_back(argv[3]);
         L = std::stod(args[0]);         //The actual conversion
         H = std::stod(args[1]);         //...
-        Scaff::BaseScaff NewScaff(L,H);
+        WishedBaseField = std::stoi(args[2]);
+        Scaff::FieldIndicator Wish = static_cast<Scaff::FieldIndicator>(WishedBaseField);
+        Scaff::BaseScaff NewScaff(L,H,Wish);
         Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
         Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
         Scaff::PrintFieldDivision(NewScaff.GetDimensions());
@@ -75,7 +79,7 @@ int main(int argc, char* argv[]){
     exit(0);
     }
 
-    
+
 	Scaff::UserInput Input;
         switch(BaseScaffMenu()) {
             //CONSTRUCTION
