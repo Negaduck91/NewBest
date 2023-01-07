@@ -92,7 +92,10 @@
 			"variant": "cpp",
 			"algorithm": "cpp",
 			"iterator": "cpp",
-			"random": "cpp"
+			"random": "cpp",
+			"expected": "cpp",
+			"spanstream": "cpp",
+			"stacktrace": "cpp"
 		}
 	}
 }
