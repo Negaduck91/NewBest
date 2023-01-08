@@ -125,7 +125,7 @@ int Scaff::ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dime
 	PathToFile += ConstructionSite;
     PathToFile += ".bin";
 	std::ifstream FileToRead;
-    FileToRead.open(PathToFile.c_str());
+    FileToRead.open(PathToFile.c_str(),std::ios::binary);
 	if(FileToRead.bad()){
         Logfile::getInstance().write("Couldt not open file to read Data\n");
         return 1;
@@ -379,6 +379,8 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
     }
     return;
 }
+
+
 
 void Scaff::PrintFieldDivision(const Scaff::Dimensions& DataToPrint){
     double TestLength=0;

@@ -88,3 +88,9 @@
 
 2023-01-08 00:24:05: Programm aufgrung leerer eingabe geschlossen
 
+2023-01-08 00:31:12: File successfully saved
+
+2023-01-08 00:36:46: File successfully saved
+
+2023-01-08 01:04:41: File successfully saved
+
