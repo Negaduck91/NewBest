@@ -246,10 +246,14 @@ std::string InputConstructionSiteName(void){
 
 int GetDismantlingInput(){
 		BaseScaff Data;
+		BaseComponents<int> ReadedComponents;
+		Dimensions ReadedDimensions;
         std::string CS("");
 		for(auto& v : GetAllDBEntrys())std::cout << v << std::endl;
 		CS=InputConstructionSiteName();
-        ReadCalcedMaterial(Data.GetComponents(),Data.GetDimensions(),CS);
+        ReadCalcedMaterial(ReadedComponents,ReadedDimensions,CS);
+		Data.SetDimensions(ReadedDimensions);
+		Data.SetComponents(ReadedComponents);
 		Scaff::PrintKeyData(&std::cout, Data.GetDimensions());
         Scaff::VisualizeOne(&std::cout,Data.GetDimensions());
 		Scaff::PrintListOfMaterial(&std::cout,Data.GetComponents(), Data.GetDimensions());

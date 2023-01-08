@@ -20,7 +20,7 @@ namespace Scaff{
 
     //Like the first function but this time its reads in 
     //the data from the third argument.
-    int ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dimensions& CalcedData,std::string& ConstructionSite);
+    int ReadCalcedMaterial(BaseComponents<int>& FilledScaff,Dimensions& CalcedData,std::string& ConstructionSite);
 
     
     void PrintListOfMaterial(std::ostream* WhereToPrint, const BaseComponents<int>& FilledScaff,const Dimensions& CalcedData);

@@ -120,7 +120,7 @@ void Scaff::VisualizeSecond(std::ostream* WhereToPrint,const Dimensions& DataToP
     *WhereToPrint<< "\n";
 }
 
-int Scaff::ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dimensions& CalcedData,std::string& ConstructionSite){
+int Scaff::ReadCalcedMaterial(BaseComponents<int>& FilledScaff,Dimensions& CalcedData,std::string& ConstructionSite){
 	std::string PathToFile(".\\Baustellen\\");
 	PathToFile += ConstructionSite;
     PathToFile += ".bin";

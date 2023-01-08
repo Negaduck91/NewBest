@@ -146,11 +146,12 @@ public:
     inline unsigned int GetFloors(){return this->CalcedData.Floors;}
     */
 
-    inline void SetAllFieldsL(int FieldsToAdd){this->CalcedData.AllFieldsL=FieldsToAdd;}
+    void SetAllFieldsL(int FieldsToAdd){this->CalcedData.AllFieldsL=FieldsToAdd;}
     void SetDimensions(const Dimensions& DataToSet);
+    void SetComponents(const BaseComponents<int> ComponentsToSet);
     void SetExtraField(FieldLength FieldToAdd);
 
-      inline BaseComponents<int> GetComponents(void){return this->Material;}
+    inline BaseComponents<int> GetComponents(void){return this->Material;}
     inline Dimensions GetDimensions(void){return this->CalcedData;}
     inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
 

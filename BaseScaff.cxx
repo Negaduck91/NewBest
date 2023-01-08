@@ -497,3 +497,7 @@ void BaseScaff::SetDimensions(const Dimensions& DataToSet){
     this->CalcedData.FieldRep[1][5] = DataToSet.FieldRep[1][5];
 }
 
+void BaseScaff::SetComponents(const BaseComponents<int> ComponentsToSet){
+    Material = ComponentsToSet;
+}
+
