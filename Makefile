@@ -5,8 +5,8 @@
 
 WORKDIR = %cd%
 
-#TARGET = Scaff
-TARGET = Scaff.exe
+TARGET = Scaff
+#TARGET = Scaff.exe
 #CXX = clang++
 #CFLAGS = -Werror=option-ignored
 CXX = g++
