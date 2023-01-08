@@ -13,7 +13,7 @@ BaseScaff::BaseScaff(double Length,double Height, FieldIndicator BaseField){
     CalcedData.FL[3] =  three_h;
     CalcedData.FL[0] =  three_h;
     CalcedData.FL[2] =  three_h;
-    CalcedData.FL[1] =  two_h;
+    CalcedData.FL[1] =  three_h;
     CalcedData.FC = normal;
     CalcedData.FW=W06;
     this->CalcedData.Height = Height;
@@ -48,7 +48,7 @@ BaseScaff::BaseScaff(const UserInput &Input){
     this->CalcedData.WishedLength = Input.Length;
     CalcedData.FL[0] =  three_h;
     CalcedData.FL[2] =  three_h;
-    CalcedData.FL[1] =  two_h;
+    CalcedData.FL[1] =  three_h;
     CalcedData.FL[5] =  three_h;
     CalcedData.FL[4] =  three_h;
     CalcedData.FL[3] =  three_h;
@@ -321,6 +321,7 @@ void BaseScaff::FieldBase250L(double MaxLength){
     if(CalcedData.RestLength != 0) {
         if(CalcedData.RestLength <= 39){
         std::cout << "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ" << std::endl;
+        CalcedData.FL[0] = two_h;
         this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
         CalcedData.FieldRep[1][two_h]=this->CalcedData.AllFieldsL;
         this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 257)/100);
@@ -339,7 +340,8 @@ void BaseScaff::FieldBase250L(double MaxLength){
         
         } else if(CalcedData.RestLength >= 61 && CalcedData.RestLength <= 75) {
             std::cout << "BBBBBBBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
-            CalcedData.FL[0] = one_h;
+            CalcedData.FL[0] = two_h;
+            CalcedData.FL[1] = one_h;
             this->CalcedData.AllFieldsL += 1;
             this->CalcedData.ShortFieldsL =2;
             this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - this->CalcedData.ShortFieldsL;
@@ -367,7 +369,8 @@ void BaseScaff::FieldBase250L(double MaxLength){
               
         } else if(CalcedData.RestLength >= 126 && CalcedData.RestLength <= 175) {
             std::cout << "DDDDDDDDDDDDDDDDDDDDDDDDDDDD" << std::endl;
-            CalcedData.FL[0] = two;
+            CalcedData.FL[1] = two;
+            CalcedData.FL[0] = two_h;
             this->CalcedData.AllFieldsL+=1;
             this->CalcedData.ShortFieldsL =2;
             this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - this->CalcedData.ShortFieldsL;
@@ -377,7 +380,8 @@ void BaseScaff::FieldBase250L(double MaxLength){
                                             ((double)(this->CalcedData.ShortFieldsL * 207)/100);
         } else if(CalcedData.RestLength >= 176 && CalcedData.RestLength <= 225) {
             std::cout << "EEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
-            CalcedData.FL[0] = two;
+            CalcedData.FL[1] = two;
+            CalcedData.FL[0] = two_h;
             this->CalcedData.AllFieldsL+=1;
             this->CalcedData.ShortFieldsL =1;
             this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - this->CalcedData.ShortFieldsL;
@@ -387,13 +391,16 @@ void BaseScaff::FieldBase250L(double MaxLength){
                                             ((double)(this->CalcedData.ShortFieldsL * 207)/100);
         } else if(CalcedData.RestLength >= 226) {
             std::cout << "FFFFFFFFFFFFFFFFFFFFFFFFFFFF" << std::endl;
+            CalcedData.FL[0] = two_h;
             this->CalcedData.AllFieldsL+=1;
             this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
             CalcedData.FieldRep[1][two_h]=this->CalcedData.AllFieldsL;
             this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 257)/100);
+
         }
     }else{ 
         std::cout << "HHHHHHHHHHHHHHHHHHHHHHHHHHHH" << std::endl;
+        CalcedData.FL[0] = two_h;
         this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
         CalcedData.FieldRep[1][two_h]=this->CalcedData.AllFieldsL;
         this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 257)/100);
@@ -460,10 +467,12 @@ void BaseScaff::AddField(FieldLength FieldToAdd, int Floors){
     Material.UsedPlanks.alu[FieldToAdd] += i_Planks;
     Material.SideGuard[FieldToAdd] += i_SideGuard;
     Material.ToeBoard[FieldToAdd] += i_ToeBoard;
+
     Material.Frames[3] += Floors;
     if(Material.Frames[0]!=0)Material.Frames[0]+=1;
     else if(Material.Frames[1]!=0)Material.Frames[1]+=1;
     else if(Material.Frames[2]!=0)Material.Frames[2]+=1;
+
 }
 
 void BaseScaff::SetDimensions(const Dimensions& DataToSet){

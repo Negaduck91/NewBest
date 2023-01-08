@@ -256,8 +256,10 @@ int GetDismantlingInput(){
 		Data.SetComponents(ReadedComponents);
 		Scaff::PrintKeyData(&std::cout, Data.GetDimensions());
         Scaff::VisualizeOne(&std::cout,Data.GetDimensions());
+		Scaff::PrintFieldDivision(Data.GetDimensions());
 		Scaff::PrintListOfMaterial(&std::cout,Data.GetComponents(), Data.GetDimensions());
-	    if(WantToSafe()==1){
+	    
+		if(WantToSafe()==1){
             std::string del(".\\Baustellen\\");
 			DeleteDBEntry(CS);
             del += CS;
