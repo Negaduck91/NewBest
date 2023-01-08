@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/Scaff.exe",
-            "args": ["22.22","22.22", "307"],
+            "args": ["15.85","22.22", "257"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

@@ -160,14 +160,20 @@ void BaseScaff::FieldBase300L(double MaxLength){
         else if(CalcedData.RestLength >= 40 && CalcedData.RestLength <= 60) {
             std::cout << "0000000000000000000000000" << std::endl;
             this->CalcedData.AllFieldsL += 1;
+            this->CalcedData.ShortFieldsL = 2;
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - 2;
+
             CalcedData.FieldRep[1][two]= 1;
             CalcedData.FieldRep[1][one_h]= 1;
-			CalcedData.FieldRep[1][three]=this->CalcedData.AllFieldsL -= 1;
-            this->CalcedData.ShortFieldsL = 2;
-            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL -= 1;
+            CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+            
 			CalcedData.FL[0] = three;                       
             CalcedData.FL[1] = two;
 			CalcedData.FL[2] = one_h;
+
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100) +
+                                            ((double)(207/100))+
+                                            ((double)(157/100));
             /*if(this->CalcedData.AllFieldsL > 5) {
                 this->CalcedData.ShortFieldsL = 5;
                 this->CalcedData.LongFieldsL -= 4;
@@ -180,13 +186,22 @@ void BaseScaff::FieldBase300L(double MaxLength){
         } else if(CalcedData.RestLength >= 60 && CalcedData.RestLength <= 125) {
             std::cout << "1111111111111111111111111111" << std::endl;
             this->CalcedData.AllFieldsL += 1;
+            this->CalcedData.ShortFieldsL = 3;
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - 3;
+			
             CalcedData.FieldRep[1][two_h]= 2;
             CalcedData.FieldRep[1][two]= 1;
-            this->CalcedData.ShortFieldsL = 3;
-            this->CalcedData.LongFieldsL -= 2;
-			CalcedData.FL[0] = three;                       
+             CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+
+            CalcedData.FL[0] = three;                       
             CalcedData.FL[1] = two_h;
 			CalcedData.FL[2] = two;
+
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100) +
+                                            ((double)((2*257)/100))+
+                                            ((double)(207/100));
+
+            
             /*} else {
                 this->CalcedData.ShortFieldsL = 1;
                 this->CalcedData.LongFieldsL -= 1;
@@ -194,12 +209,21 @@ void BaseScaff::FieldBase300L(double MaxLength){
             }*/
         } else if(CalcedData.RestLength >= 126 && CalcedData.RestLength <= 175) {
             std::cout << "2222222222222222222222222222" << std::endl;
+            
             this->CalcedData.AllFieldsL += 1;
-            CalcedData.FieldRep[1][two_h]= 3;
-            this->CalcedData.LongFieldsL -= 2;
             this->CalcedData.ShortFieldsL = 3;
-			CalcedData.FL[0] = three;                       
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - 3;
+			
+            CalcedData.FieldRep[1][two_h]= 3;
+            CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+
+            CalcedData.FL[0] = three;                       
             CalcedData.FL[1] = two_h;
+
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100) +
+                                            ((double)((3*257)/100));
+
+
 			
             /*if(this->CalcedData.AllFieldsL > 3) {
                 this->CalcedData.ShortFieldsL = 3;
@@ -211,11 +235,18 @@ void BaseScaff::FieldBase300L(double MaxLength){
             }*/
         } else if(CalcedData.RestLength >= 176 && CalcedData.RestLength <= 225) {
             std::cout << "3333333333333333333333333333" << std::endl;
-            this->CalcedData.AllFieldsL +=1;
-            CalcedData.FieldRep[1][two]= 1;
-			CalcedData.FL[1] = two;
+            this->CalcedData.AllFieldsL += 1;
             this->CalcedData.ShortFieldsL = 1;
-            this->CalcedData.LongFieldsL -= 1;
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - 1;
+			
+            CalcedData.FieldRep[1][two]= 1;
+            CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+
+            CalcedData.FL[0] = three;                       
+            CalcedData.FL[1] = two;
+
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100) +
+                                            ((double)((207)/100));
             /*if(this->CalcedData.AllFieldsL > 2) {
                 this->CalcedData.ShortFieldsL = 2;
                 this->CalcedData.LongFieldsL -= 2;
@@ -226,21 +257,34 @@ void BaseScaff::FieldBase300L(double MaxLength){
             }*/
         } else if(CalcedData.RestLength >= 226 && CalcedData.RestLength <= 275) {
             std::cout << "4444444444444444444444444444" << std::endl;
-            this->CalcedData.AllFieldsL +=1;
-            CalcedData.FieldRep[1][two_h]= 1;
+            this->CalcedData.AllFieldsL += 1;
             this->CalcedData.ShortFieldsL = 1;
-            this->CalcedData.LongFieldsL -= 1;
-			CalcedData.FL[1] = two_h; 
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL - 1;
+			
+            CalcedData.FieldRep[1][two_h]= 1;
+            CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+
+            CalcedData.FL[0] = three;                       
+            CalcedData.FL[1] = two_h;
+
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100) +
+                                            ((double)((257)/100));
         } else if( CalcedData.RestLength >= 276) {
             std::cout << "5555555555555555555555555555" << std::endl;
-            this->CalcedData.AllFieldsL +=1 ;
-            CalcedData.FieldRep[1][three]= 1;
-            this->CalcedData.LongFieldsL = 1;
+            this->CalcedData.AllFieldsL += 1;
+            this->CalcedData.ShortFieldsL = 0;
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
+            CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+            CalcedData.FL[0] = three;                       
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100);
         } 
     } else{
         std::cout << "0000000000000000000000000000" << std::endl;
-        this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
-        CalcedData.FieldRep[1][three]=this->CalcedData.AllFieldsL;
+        this->CalcedData.ShortFieldsL = 0;
+            this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
+            CalcedData.FieldRep[1][three] = this->CalcedData.LongFieldsL;
+            CalcedData.FL[0] = three;                       
+            this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 307)/100);
     } 
     CalcTechnicalData();
 }
@@ -332,7 +376,7 @@ void BaseScaff::FieldBase250L(double MaxLength){
             this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 257)/100) +
                                             ((double)(this->CalcedData.ShortFieldsL * 207)/100);
         } else if(CalcedData.RestLength >= 176 && CalcedData.RestLength <= 225) {
-            std::cout << "FFFFFFFFFFFFFFFFFFFFFFFFFFFF" << std::endl;
+            std::cout << "EEEEEEEEEEEEEEEEEEEEEEEEEEEE" << std::endl;
             CalcedData.FL[0] = two;
             this->CalcedData.AllFieldsL+=1;
             this->CalcedData.ShortFieldsL =1;
@@ -342,7 +386,7 @@ void BaseScaff::FieldBase250L(double MaxLength){
             this->CalcedData.CalcedLength = ((double)(this->CalcedData.LongFieldsL * 257)/100)+
                                             ((double)(this->CalcedData.ShortFieldsL * 207)/100);
         } else if(CalcedData.RestLength >= 226) {
-            std::cout << "GGGGGGGGGGGGGGGGGGGGGGGGGGGG" << std::endl;
+            std::cout << "FFFFFFFFFFFFFFFFFFFFFFFFFFFF" << std::endl;
             this->CalcedData.AllFieldsL+=1;
             this->CalcedData.LongFieldsL = this->CalcedData.AllFieldsL;
             CalcedData.FieldRep[1][two_h]=this->CalcedData.AllFieldsL;

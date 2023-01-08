@@ -150,7 +150,7 @@ public:
     void SetDimensions(const Dimensions& DataToSet);
     void SetExtraField(FieldLength FieldToAdd);
 
-    inline BaseComponents<int> GetComponents(void){return this->Material;}
+      inline BaseComponents<int> GetComponents(void){return this->Material;}
     inline Dimensions GetDimensions(void){return this->CalcedData;}
     inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
 

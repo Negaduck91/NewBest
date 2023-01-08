@@ -1,0 +1,2 @@
+Testcase 1 aka 99 for 307 algorithm with ./Scaff 15.5 17.88 307 input [OK]
+Testcase 2 aka 00 for 307 algorithm with ./Scaff 15.85 17.88 307 input [OK] 
