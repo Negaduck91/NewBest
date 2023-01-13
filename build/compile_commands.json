@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/alex/Dokumente/NewBesr/build",
+  "command": "/usr/bin/clang++   -g -o CMakeFiles/NewBest.dir/main.cpp.o -c /home/alex/Dokumente/NewBesr/main.cpp",
+  "file": "/home/alex/Dokumente/NewBesr/main.cpp"
+}
+]
