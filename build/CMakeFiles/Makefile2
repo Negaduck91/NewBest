@@ -837,12 +837,12 @@ CMakeFiles/ContinuousSubmit.dir/clean:
 CMakeFiles/NewBest.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=1,2 "Built target NewBest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target NewBest"
 .PHONY : CMakeFiles/NewBest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/NewBest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Dokumente/NewBesr/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Dokumente/NewBesr/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/NewBest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Dokumente/NewBesr/build/CMakeFiles 0
 .PHONY : CMakeFiles/NewBest.dir/rule

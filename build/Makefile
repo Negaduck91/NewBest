@@ -523,6 +523,102 @@ NewBest/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/build
 .PHONY : NewBest/fast
 
+BaseScaff.o: BaseScaff.cxx.o
+.PHONY : BaseScaff.o
+
+# target to build an object file
+BaseScaff.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/BaseScaff.cxx.o
+.PHONY : BaseScaff.cxx.o
+
+BaseScaff.i: BaseScaff.cxx.i
+.PHONY : BaseScaff.i
+
+# target to preprocess a source file
+BaseScaff.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/BaseScaff.cxx.i
+.PHONY : BaseScaff.cxx.i
+
+BaseScaff.s: BaseScaff.cxx.s
+.PHONY : BaseScaff.s
+
+# target to generate assembly for a file
+BaseScaff.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/BaseScaff.cxx.s
+.PHONY : BaseScaff.cxx.s
+
+Logger.o: Logger.cxx.o
+.PHONY : Logger.o
+
+# target to build an object file
+Logger.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Logger.cxx.o
+.PHONY : Logger.cxx.o
+
+Logger.i: Logger.cxx.i
+.PHONY : Logger.i
+
+# target to preprocess a source file
+Logger.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Logger.cxx.i
+.PHONY : Logger.cxx.i
+
+Logger.s: Logger.cxx.s
+.PHONY : Logger.s
+
+# target to generate assembly for a file
+Logger.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Logger.cxx.s
+.PHONY : Logger.cxx.s
+
+Menus.o: Menus.cxx.o
+.PHONY : Menus.o
+
+# target to build an object file
+Menus.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Menus.cxx.o
+.PHONY : Menus.cxx.o
+
+Menus.i: Menus.cxx.i
+.PHONY : Menus.i
+
+# target to preprocess a source file
+Menus.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Menus.cxx.i
+.PHONY : Menus.cxx.i
+
+Menus.s: Menus.cxx.s
+.PHONY : Menus.s
+
+# target to generate assembly for a file
+Menus.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Menus.cxx.s
+.PHONY : Menus.cxx.s
+
+Utilities.o: Utilities.cxx.o
+.PHONY : Utilities.o
+
+# target to build an object file
+Utilities.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Utilities.cxx.o
+.PHONY : Utilities.cxx.o
+
+Utilities.i: Utilities.cxx.i
+.PHONY : Utilities.i
+
+# target to preprocess a source file
+Utilities.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Utilities.cxx.i
+.PHONY : Utilities.cxx.i
+
+Utilities.s: Utilities.cxx.s
+.PHONY : Utilities.s
+
+# target to generate assembly for a file
+Utilities.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NewBest.dir/build.make CMakeFiles/NewBest.dir/Utilities.cxx.s
+.PHONY : Utilities.cxx.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -587,6 +683,18 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... NewBest"
+	@echo "... BaseScaff.o"
+	@echo "... BaseScaff.i"
+	@echo "... BaseScaff.s"
+	@echo "... Logger.o"
+	@echo "... Logger.i"
+	@echo "... Logger.s"
+	@echo "... Menus.o"
+	@echo "... Menus.i"
+	@echo "... Menus.s"
+	@echo "... Utilities.o"
+	@echo "... Utilities.i"
+	@echo "... Utilities.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

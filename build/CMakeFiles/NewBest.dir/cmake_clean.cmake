@@ -1,4 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/NewBest.dir/BaseScaff.cxx.o"
+  "CMakeFiles/NewBest.dir/BaseScaff.cxx.o.d"
+  "CMakeFiles/NewBest.dir/Logger.cxx.o"
+  "CMakeFiles/NewBest.dir/Logger.cxx.o.d"
+  "CMakeFiles/NewBest.dir/Menus.cxx.o"
+  "CMakeFiles/NewBest.dir/Menus.cxx.o.d"
+  "CMakeFiles/NewBest.dir/Utilities.cxx.o"
+  "CMakeFiles/NewBest.dir/Utilities.cxx.o.d"
   "CMakeFiles/NewBest.dir/main.cpp.o"
   "CMakeFiles/NewBest.dir/main.cpp.o.d"
   "NewBest"

@@ -73,27 +73,91 @@ CMakeFiles/NewBest.dir/main.cpp.o: CMakeFiles/NewBest.dir/flags.make
 CMakeFiles/NewBest.dir/main.cpp.o: ../main.cpp
 CMakeFiles/NewBest.dir/main.cpp.o: CMakeFiles/NewBest.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/NewBest.dir/main.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NewBest.dir/main.cpp.o -MF CMakeFiles/NewBest.dir/main.cpp.o.d -o CMakeFiles/NewBest.dir/main.cpp.o -c /home/alex/Dokumente/NewBesr/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NewBest.dir/main.cpp.o -MF CMakeFiles/NewBest.dir/main.cpp.o.d -o CMakeFiles/NewBest.dir/main.cpp.o -c /home/alex/Dokumente/NewBesr/main.cpp
 
 CMakeFiles/NewBest.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NewBest.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Dokumente/NewBesr/main.cpp > CMakeFiles/NewBest.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Dokumente/NewBesr/main.cpp > CMakeFiles/NewBest.dir/main.cpp.i
 
 CMakeFiles/NewBest.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NewBest.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Dokumente/NewBesr/main.cpp -o CMakeFiles/NewBest.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Dokumente/NewBesr/main.cpp -o CMakeFiles/NewBest.dir/main.cpp.s
+
+CMakeFiles/NewBest.dir/Menus.cxx.o: CMakeFiles/NewBest.dir/flags.make
+CMakeFiles/NewBest.dir/Menus.cxx.o: ../Menus.cxx
+CMakeFiles/NewBest.dir/Menus.cxx.o: CMakeFiles/NewBest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/NewBest.dir/Menus.cxx.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NewBest.dir/Menus.cxx.o -MF CMakeFiles/NewBest.dir/Menus.cxx.o.d -o CMakeFiles/NewBest.dir/Menus.cxx.o -c /home/alex/Dokumente/NewBesr/Menus.cxx
+
+CMakeFiles/NewBest.dir/Menus.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NewBest.dir/Menus.cxx.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Dokumente/NewBesr/Menus.cxx > CMakeFiles/NewBest.dir/Menus.cxx.i
+
+CMakeFiles/NewBest.dir/Menus.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NewBest.dir/Menus.cxx.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Dokumente/NewBesr/Menus.cxx -o CMakeFiles/NewBest.dir/Menus.cxx.s
+
+CMakeFiles/NewBest.dir/Logger.cxx.o: CMakeFiles/NewBest.dir/flags.make
+CMakeFiles/NewBest.dir/Logger.cxx.o: ../Logger.cxx
+CMakeFiles/NewBest.dir/Logger.cxx.o: CMakeFiles/NewBest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/NewBest.dir/Logger.cxx.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NewBest.dir/Logger.cxx.o -MF CMakeFiles/NewBest.dir/Logger.cxx.o.d -o CMakeFiles/NewBest.dir/Logger.cxx.o -c /home/alex/Dokumente/NewBesr/Logger.cxx
+
+CMakeFiles/NewBest.dir/Logger.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NewBest.dir/Logger.cxx.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Dokumente/NewBesr/Logger.cxx > CMakeFiles/NewBest.dir/Logger.cxx.i
+
+CMakeFiles/NewBest.dir/Logger.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NewBest.dir/Logger.cxx.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Dokumente/NewBesr/Logger.cxx -o CMakeFiles/NewBest.dir/Logger.cxx.s
+
+CMakeFiles/NewBest.dir/Utilities.cxx.o: CMakeFiles/NewBest.dir/flags.make
+CMakeFiles/NewBest.dir/Utilities.cxx.o: ../Utilities.cxx
+CMakeFiles/NewBest.dir/Utilities.cxx.o: CMakeFiles/NewBest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/NewBest.dir/Utilities.cxx.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NewBest.dir/Utilities.cxx.o -MF CMakeFiles/NewBest.dir/Utilities.cxx.o.d -o CMakeFiles/NewBest.dir/Utilities.cxx.o -c /home/alex/Dokumente/NewBesr/Utilities.cxx
+
+CMakeFiles/NewBest.dir/Utilities.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NewBest.dir/Utilities.cxx.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Dokumente/NewBesr/Utilities.cxx > CMakeFiles/NewBest.dir/Utilities.cxx.i
+
+CMakeFiles/NewBest.dir/Utilities.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NewBest.dir/Utilities.cxx.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Dokumente/NewBesr/Utilities.cxx -o CMakeFiles/NewBest.dir/Utilities.cxx.s
+
+CMakeFiles/NewBest.dir/BaseScaff.cxx.o: CMakeFiles/NewBest.dir/flags.make
+CMakeFiles/NewBest.dir/BaseScaff.cxx.o: ../BaseScaff.cxx
+CMakeFiles/NewBest.dir/BaseScaff.cxx.o: CMakeFiles/NewBest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/NewBest.dir/BaseScaff.cxx.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NewBest.dir/BaseScaff.cxx.o -MF CMakeFiles/NewBest.dir/BaseScaff.cxx.o.d -o CMakeFiles/NewBest.dir/BaseScaff.cxx.o -c /home/alex/Dokumente/NewBesr/BaseScaff.cxx
+
+CMakeFiles/NewBest.dir/BaseScaff.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/NewBest.dir/BaseScaff.cxx.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/Dokumente/NewBesr/BaseScaff.cxx > CMakeFiles/NewBest.dir/BaseScaff.cxx.i
+
+CMakeFiles/NewBest.dir/BaseScaff.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/NewBest.dir/BaseScaff.cxx.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/Dokumente/NewBesr/BaseScaff.cxx -o CMakeFiles/NewBest.dir/BaseScaff.cxx.s
 
 # Object files for target NewBest
 NewBest_OBJECTS = \
-"CMakeFiles/NewBest.dir/main.cpp.o"
+"CMakeFiles/NewBest.dir/main.cpp.o" \
+"CMakeFiles/NewBest.dir/Menus.cxx.o" \
+"CMakeFiles/NewBest.dir/Logger.cxx.o" \
+"CMakeFiles/NewBest.dir/Utilities.cxx.o" \
+"CMakeFiles/NewBest.dir/BaseScaff.cxx.o"
 
 # External object files for target NewBest
 NewBest_EXTERNAL_OBJECTS =
 
 NewBest: CMakeFiles/NewBest.dir/main.cpp.o
+NewBest: CMakeFiles/NewBest.dir/Menus.cxx.o
+NewBest: CMakeFiles/NewBest.dir/Logger.cxx.o
+NewBest: CMakeFiles/NewBest.dir/Utilities.cxx.o
+NewBest: CMakeFiles/NewBest.dir/BaseScaff.cxx.o
 NewBest: CMakeFiles/NewBest.dir/build.make
 NewBest: CMakeFiles/NewBest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable NewBest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alex/Dokumente/NewBesr/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable NewBest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NewBest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
