@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <fstream>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 
 #include "umlaute.h"
-
+  
 namespace Scaff{
 
 //Used Multiplier to calculate

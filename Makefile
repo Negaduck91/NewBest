@@ -12,7 +12,7 @@ CXX = g++
 CFLAGS = -Wall -fexceptions -Wpedantic -Wuninitialized -Wmissing-include-dirs -g 
 
 $(TARGET): main.o BaseScaff.o Menus.o Utilities.o
-	$(CXX) -o $@ main.o BaseScaff.o Menus.o Utilities.o
+	$(CXX) -o $@ main.cpp BaseScaff.cxx Menus.cxx  Utilities.cxx
 
 main.o: main.cpp BaseScaff.hxx Logger.hxx Utilities.hxx
 	$(CXX) $(CFLAGS) -c $<
