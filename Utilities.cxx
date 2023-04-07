@@ -50,7 +50,7 @@ void Scaff::RemoveSpecialCharacter(std::string& InputString){
 int Scaff::AddDBEntry(const std::string& NameOfFile){
     std::ofstream DataBase("Baustellen\\DB.txt", std::ios_base::app);
     if(DataBase.bad()){
-        Logfile::getInstance().write("Couldnt open DataBase to add new entry...\n");
+        //Logfile::getInstance().write("Couldnt open DataBase to add new entry...\n");
         return 1;   //1 indicates cant open file 
     }
     DataBase << NameOfFile << std::endl;
@@ -71,10 +71,10 @@ int Scaff::DeleteDBEntry(const std::string& NameOfFile){
             }
             else{
                 std::cout <<"Entry successfull deleted\n";
-                Logfile::getInstance().write("Entry successfull deleted\n");
+                //Logfile::getInstance().write("Entry successfull deleted\n");
                 std::ofstream DataBase("Baustellen\\DB.txt",std::ios_base::trunc);
                 if(DataBase.bad()){
-                    Logfile::getInstance().write("Couldnt open DataBase to delete entry...\n");
+                    //Logfile::getInstance().write("Couldnt open DataBase to delete entry...\n");
                     return 2;
                 }
                 for(auto& a : AllConstructionSites)
@@ -90,7 +90,7 @@ std::vector<std::string> Scaff::GetAllDBEntrys(){
     std::ifstream DataBase("Baustellen\\DB.txt");
     if(DataBase.bad()){
         std::cerr << "Couldnt open DataBase...\n" << std::endl;
-        Logfile::getInstance().write("Couldnt open DataBase...\n");
+        //Logfile::getInstance().write("Couldnt open DataBase...\n");
         exit(1);
     }
     std::string content("");
@@ -128,7 +128,7 @@ int Scaff::ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dime
 	std::ifstream FileToRead;
     FileToRead.open(PathToFile.c_str());
 	if(FileToRead.bad()){
-        Logfile::getInstance().write("Couldt not open file to read Data\n");
+        //Logfile::getInstance().write("Couldt not open file to read Data\n");
         return 1;
 	}
     FileToRead.seekg(0);
@@ -148,9 +148,9 @@ int Scaff::WriteCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dim
         FileToWrite.write((char*)&FilledScaff,sizeof(BaseComponents<int>));
         FileToWrite.write((char*)&CalcedData,sizeof(Dimensions));
         FileToWrite.close();
-        Logfile::getInstance().write("File successfully saved\n");        
+        //Logfile::getInstance().write("File successfully saved\n");        
     }else{
-        Logfile::getInstance().write("Could not open the file to store Data\n");
+        //Logfile::getInstance().write("Could not open the file to store Data\n");
         FileToWrite.close();
         exit(1);
     }
@@ -269,15 +269,10 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
                 break;
 
         }
-
-        /*std::cout <<"Feld das getauscht werden soll "<< e_AltesFeld<< std::endl;
-
-
-
-
-
-    std::cout << "Welches Feld soll ersetzt werden: "<< std::endl;
-    std::cout << "[1] ";
+        /*
+        std::cout <<"Feld das getauscht werden soll "<< e_AltesFeld<< std::endl;
+        std::cout << "Welches Feld soll ersetzt werden: "<< std::endl;
+        std::cout << "[1] ";*/
     
     /*
         We have an array of possible fields(ChosenFields[2]).

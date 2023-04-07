@@ -1,15 +1,15 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Windows",
             "includePath": [
                 "${workspaceFolder}/**"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/cpp",
+            "compilerPath": "cl.exe",
             "cStandard": "gnu17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "linux-gcc-x64",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "windows-msvc-x64",
             "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],

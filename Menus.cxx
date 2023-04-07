@@ -1,11 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-//#include <windows.h>
+
 
 #include "Menus.hxx"
 #include "umlaute.h"
-#include "BaseScaff.hxx"
+#include "BaseScaff.hxx"   
 //#include "Logger.hxx"
 #include "Utilities.hxx"
 
@@ -18,6 +18,18 @@
 */
 
 using namespace Scaff;
+
+void Banner(){
+	std::cout << "\t\t************  *****   *****   ***********    ******   *****" << std::endl;
+    std::cout << "\t\t*   ********  *   *   *   *   *  .....  *    *    *  *   *" << std::endl;
+	std::cout << "\t\t*   *         *   *   *   *   *  :...:  *    *    * *   *" <<std::endl;
+    std::cout << "\t\t*   *         *   *****   *   *         *    *    **   *" <<std::endl;
+	std::cout << "\t\t*   ****      *           *   *   *****      *    *   *" << std::endl;
+	std::cout << "\t\t*   ****      *   *****   *   *  .....  *    *       *" << std::endl;
+	std::cout << "\t\t*   *         *   *   *   *   *  :...:  *    *         *" <<std::endl;
+	std::cout << "\t\t*   *         *   *   *   *   *         *    *     **   *"  <<std::endl;
+    std::cout << "\t\t*****         *****   *****   ***********    ******  *****" <<std::endl;
+}
 
 int WantToSafe(){
 	std::cout << "Wollen Sie die Daten speichern?" << std::endl;
@@ -48,7 +60,6 @@ Target lexical_cast(Source arg){
         return result;
 }
 
-void Banner();
 
 int MainMenu(){
 	int Choice=0;
@@ -100,17 +111,7 @@ int BaseScaffMenu(){
 	return Choice;
 }
 
-void Banner(){
-	std::cout << "\t\t************  *****   *****   ***********    ******   *****" << std::endl;
-    std::cout << "\t\t*   ********  *   *   *   *   *  .....  *    *    *  *   *" << std::endl;
-	std::cout << "\t\t*   *         *   *   *   *   *  :...:  *    *    * *   *" <<std::endl;
-    std::cout << "\t\t*   *         *   *****   *   *         *    *    **   *" <<std::endl;
-	std::cout << "\t\t*   ****      *           *   *   *****      *    *   *" << std::endl;
-	std::cout << "\t\t*   ****      *   *****   *   *  .....  *    *       *" << std::endl;
-	std::cout << "\t\t*   *         *   *   *   *   *  :...:  *    *         *" <<std::endl;
-	std::cout << "\t\t*   *         *   *   *   *   *         *    *     **   *"  <<std::endl;
-    std::cout << "\t\t*****         *****   *****   ***********    ******  *****" <<std::endl;
-}
+
 
 void GetMontageInput(UserInput& ToFill){
 	int FT=0;
@@ -200,10 +201,10 @@ int GetDismantlingInput(){
             del += CS;
             del += ".bin";
             if(EraseFile(del.c_str())){
-				Logfile::getInstance().write("Couldnt delete File\n");
+				//Logfile::getInstance().write("Couldnt delete File\n");
 				return 1;
 			}
-			Logfile::getInstance().write("Deleting File complete.\n");
+			//Logfile::getInstance().write("Deleting File complete.\n");
 
 		}
 		return 0;

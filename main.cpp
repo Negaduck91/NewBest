@@ -75,7 +75,7 @@ int main(int argc, char* argv[]){
 			NewBaseScaff(Input);
 			break;
 
-			//DISMANTLING
+			//DECONSTRUCTION
             //Do we want to delete the File from our 
             //Data base or do we just want to look it up 
             //for some reason??
@@ -86,7 +86,6 @@ int main(int argc, char* argv[]){
             break;
         }
         //break;
-
         //Here the User wants an Allround Scaffold
     //case 2: //new_modul();
             //break;

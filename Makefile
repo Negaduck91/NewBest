@@ -20,8 +20,8 @@ main.o: main.cpp BaseScaff.hxx Logger.hxx Utilities.hxx
 BaseScaff.o: BaseScaff.cxx BaseScaff.hxx
 	$(CXX) $(CFLAGS) -c $<
 	
-#Logger.o: Logger.cxx Logger.hxx
-#	$(CXX) $(CFLAGS) -c $<
+Logger.o: Logger.cxx Logger.hxx
+	$(CXX) $(CFLAGS) -c $<
 	
 Menus.o: Menus.cxx Menus.hxx
 	$(CXX) $(CFLAGS) -c $<
@@ -29,5 +29,3 @@ Menus.o: Menus.cxx Menus.hxx
 Utilities.o: Utilities.cxx Utilities.hxx
 	$(CXX) $(CFLAGS) -c $<
 
-clean:
-	-$(RM) main.o BaseScaff.o

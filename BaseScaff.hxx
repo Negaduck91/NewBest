@@ -11,7 +11,7 @@ namespace Scaff{
 
 //Used Multiplier to calculate
 //the planks dependent on the 
-//Fieldwidth
+//Fieldwidth 
 enum FieldWidth :
 int{W06=2,W09};
 
@@ -77,6 +77,11 @@ struct Planks {
     Planks()=default;
 };
 
+//TODO
+//Need to implement a operator*() function
+//to multiply an int instance with an double 
+//instance
+
 //All unique comps in one struct
 //from which all the other classes
 //will inherit from
@@ -110,7 +115,7 @@ private:
                                         {0,0,0,0,0}},     // 
                                         {0,0,0,0,0},      //guards
                                         {0,0,0,0,0},      //toe board
-                                        {0,0},        //vertical-braces
+                                        {0,0},             //vertical-braces
                                         {0,0,0,0},        //normal-frames
                                         {0,0},            //end-guard
                                         0};               //base jack;
@@ -129,13 +134,14 @@ private:
 public:
     BaseScaff()=default;
     //This one is used for a quick field calculation
+    //e.g direct as start argument
 	BaseScaff(double WishedLength, double WishedHeight);
     //This one is used if we get full input from the user
 	BaseScaff(const UserInput &Input);
     ~BaseScaff()=default;
 
     
-    inline void SetCalcedLength(double input){ this->CalcedData.CalcedLength = input;}
+    
     /*  Not needed yet
     inline void SetLongFieldsL(int LongFields){this->CalcedData.LongFieldsL=LongFields;}
     inline void SetShortFieldsL(int ShortFields){this->CalcedData.ShortFieldsL=ShortFields;}
@@ -150,6 +156,7 @@ public:
     void SetDimensions(const Dimensions& DataToSet);
     void SetUpdatetComponents(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
     void SetExtraField(FieldLength FieldToAdd);
+    inline void SetCalcedLength(double input){ this->CalcedData.CalcedLength = input;}
 
     inline BaseComponents<int> GetComponents(void){return this->Material;}
     inline Dimensions GetDimensions(void){return this->CalcedData;}

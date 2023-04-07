@@ -6,7 +6,7 @@
 #include <fstream>
 
 #include "BaseScaff.hxx"
-#include "Logger.hxx"
+//#include "Logger.hxx"
 
 namespace Scaff{
 

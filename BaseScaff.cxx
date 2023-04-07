@@ -41,7 +41,6 @@ BaseScaff::BaseScaff(double Length,double Height){
 }
 
 
-
 BaseScaff::BaseScaff(const UserInput &Input){
 	this->CalcedData.Floors =   this->CalcedData.AllFieldsL =
                                 this->CalcedData.LongFieldsL=
