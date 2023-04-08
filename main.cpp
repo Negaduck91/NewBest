@@ -6,11 +6,11 @@
 #include <time.h>
 
 
-#include "Menus.hxx"            //Recoding 99% done
-#include "BaseScaff.hxx"        //Recoding 99% done
+#include "src/lib/Menus.hxx"            //Recoding 99% done
+#include "src/lib/BaseScaff.hxx"        //Recoding 99% done
 //#include "Logger.hxx"           //Singleton pattern Logger Class to Log 
                                 //every problem that occurs while executing 
-#include "Utilities.hxx"
+#include "src/lib/Utilities.hxx"
 
 //
 //TODO

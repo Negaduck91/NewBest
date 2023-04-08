@@ -1,5 +1,5 @@
-#include "BaseScaff.hxx"
-#include "Logger.hxx"
+#include "lib/BaseScaff.hxx"
+//#include "Logger.hxx"
 
 using namespace Scaff;
 

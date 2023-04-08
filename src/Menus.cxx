@@ -3,11 +3,11 @@
 #include <sstream>
 
 
-#include "Menus.hxx"
-#include "umlaute.h"
-#include "BaseScaff.hxx"   
+#include "lib/Menus.hxx"
+#include "lib/umlaute.h"
+#include "lib/BaseScaff.hxx"   
 //#include "Logger.hxx"
-#include "Utilities.hxx"
+#include "lib/Utilities.hxx"
 
 
 

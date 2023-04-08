@@ -11,21 +11,21 @@ TARGET = Scaff
 CXX = g++
 CFLAGS = -Wall -fexceptions -Wpedantic -Wuninitialized -Wmissing-include-dirs -g 
 
-$(TARGET): main.o BaseScaff.o Menus.o Utilities.o
-	$(CXX) -o $@ main.cpp BaseScaff.cxx Menus.cxx  Utilities.cxx
+$(TARGET): obj/main.o obj/BaseScaff.o obj/Menus.o obj/Utilities.o
+	$(CXX) -o $@ main.cpp src/BaseScaff.cxx src/Menus.cxx  src/Utilities.cxx
 
-main.o: main.cpp BaseScaff.hxx Logger.hxx Utilities.hxx
+main.o: src/main.cpp lib/BaseScaff.hxx lib/Logger.hxx lib/Utilities.hxx
 	$(CXX) $(CFLAGS) -c $<
 
-BaseScaff.o: BaseScaff.cxx BaseScaff.hxx
+BaseScaff.o: src/BaseScaff.cxx lib/BaseScaff.hxx
 	$(CXX) $(CFLAGS) -c $<
 	
-Logger.o: Logger.cxx Logger.hxx
+Logger.o: src/Logger.cxx lib/Logger.hxx
 	$(CXX) $(CFLAGS) -c $<
 	
-Menus.o: Menus.cxx Menus.hxx
+Menus.o: src/Menus.cxx lib/Menus.hxx
 	$(CXX) $(CFLAGS) -c $<
 
-Utilities.o: Utilities.cxx Utilities.hxx
+Utilities.o: src/Utilities.cxx lib/Utilities.hxx
 	$(CXX) $(CFLAGS) -c $<
 

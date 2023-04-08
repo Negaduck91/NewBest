@@ -1,6 +1,6 @@
-#include "Utilities.hxx"
+#include "lib/Utilities.hxx"
 //#include "Logger.hxx"
-#include "BaseScaff.hxx"
+#include "lib/BaseScaff.hxx"
 #include <algorithm>
 
 
@@ -14,8 +14,6 @@ void Scaff::PrintKeyData(std::ostream* WhereToPrint,const Dimensions& DataToPrin
     "Kg\nGesamlaenge: "<< DataToPrint.CalcedLength
     <<"\nLagen : "<< DataToPrint.Floors << std::endl << std::endl;
 }
-
-
 
 int Scaff::EraseFile(const char *FileName) {
    unsigned long size;
