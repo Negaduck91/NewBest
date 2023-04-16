@@ -33,6 +33,7 @@ int{first=73,second=109,third=157,fourth=207,fifth=257,sixth=307};
 enum FloorCompensation:
 int {mini,small,medium,normal};
 
+
 struct Dimensions{
     int FieldRep[2][7];                 //Decided for a new represantation of our calculated fields. 
                                         //the 0 row represents the fields length and second row indicates how many of each

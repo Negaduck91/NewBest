@@ -206,6 +206,13 @@ void Scaff::PrintListOfMaterial(std::ostream* WhereToPrint, const BaseComponents
     
 }
 
+//TODO
+//Need to get the User interaction out 
+//of that function so that it parameters probably gets
+//changed but then its independent  
+//There needs to be an function in the menus section that 
+//asks the questins and thern calls the member function that
+//actually changes the fields
 void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& ScaffToChange){
     int count =0;
     //Lets count how manys field are set 
