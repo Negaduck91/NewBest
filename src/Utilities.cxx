@@ -1,6 +1,6 @@
 #include "lib/Utilities.hxx"
 //#include "Logger.hxx"
-#include "lib/BaseScaff.hxx"
+#include "lib/FacadeScaff.hxx"
 #include <algorithm>
 
 
@@ -11,7 +11,7 @@ void Scaff::PrintKeyData(std::ostream* WhereToPrint,const Dimensions& DataToPrin
     "\t\tGewicht: "<< DataToPrint.Weight <<
     "t\nKurze Felder: "<< DataToPrint.ShortFieldsL <<
     "\t\tStiellast: ca. " << DataToPrint.MaxStalkLoad <<
-    "Kg\nGesamlaenge: "<< DataToPrint.CalcedLength
+    "Kg\nGesamlaenge: "<< DataToPrint.Calcedlength_
     <<"\nLagen : "<< DataToPrint.Floors << std::endl << std::endl;
 }
 
@@ -57,13 +57,13 @@ int Scaff::AddDBEntry(const std::string& NameOfFile){
 }
 
 int Scaff::DeleteDBEntry(const std::string& NameOfFile){
-    std::vector<std::string> AllConstructionSites= GetAllDBEntrys();
+    std::vector<std::string> Allconstruction_site_s= GetAllDBEntrys();
     //Lets go through our vector and lets see if we can find th given string
-    for(auto& a : AllConstructionSites){
+    for(auto& a : Allconstruction_site_s){
         if(a == NameOfFile){
             std::cout << "Found Construction Site" << std::endl;
-            if(AllConstructionSites.erase(std::find(AllConstructionSites.begin(), 
-                AllConstructionSites.end(),NameOfFile))==AllConstructionSites.end()){
+            if(Allconstruction_site_s.erase(std::find(Allconstruction_site_s.begin(), 
+                Allconstruction_site_s.end(),NameOfFile))==Allconstruction_site_s.end()){
                 std::cout << "Could not delete the entry...\n";
                 return 1;
             }
@@ -75,7 +75,7 @@ int Scaff::DeleteDBEntry(const std::string& NameOfFile){
                     //Logfile::getInstance().write("Couldnt open DataBase to delete entry...\n");
                     return 2;
                 }
-                for(auto& a : AllConstructionSites)
+                for(auto& a : Allconstruction_site_s)
                     DataBase << a << std::endl;
                 break;
             }
@@ -92,12 +92,12 @@ std::vector<std::string> Scaff::GetAllDBEntrys(){
         exit(1);
     }
     std::string content("");
-    std::vector<std::string> ConstructionSites; 
+    std::vector<std::string> construction_site_s; 
     while(std::getline(DataBase,content)){
-        ConstructionSites.push_back(content);
+        construction_site_s.push_back(content);
     }
     DataBase.close();
-    return ConstructionSites;
+    return construction_site_s;
 }
 
 void Scaff::VisualizeOne(std::ostream* WhereToPrint,const Dimensions& DataToPrint){
@@ -119,9 +119,9 @@ void Scaff::VisualizeSecond(std::ostream* WhereToPrint,const Dimensions& DataToP
     *WhereToPrint<< "\n";
 }
 
-int Scaff::ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dimensions& CalcedData,std::string& ConstructionSite){
+int Scaff::ReadCalcednum_of_comps_(const BaseComponents<int>& FilledScaff, const Dimensions& calced_dims_,std::string& construction_site_){
 	std::string PathToFile(".\\Baustellen\\");
-	PathToFile += ConstructionSite;
+	PathToFile += construction_site_;
     PathToFile += ".bin";
 	std::ifstream FileToRead;
     FileToRead.open(PathToFile.c_str());
@@ -131,20 +131,20 @@ int Scaff::ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dime
 	}
     FileToRead.seekg(0);
     FileToRead.read((char*)&FilledScaff,sizeof(BaseComponents<int>));
-    FileToRead.read((char*)&CalcedData,sizeof(Dimensions));
+    FileToRead.read((char*)&calced_dims_,sizeof(Dimensions));
 	FileToRead.close();
     return 0;
 }
 
-int Scaff::WriteCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dimensions& CalcedData,std::string ConstructionSite){
+int Scaff::WriteCalcednum_of_comps_(const BaseComponents<int>& FilledScaff, const Dimensions& calced_dims_,std::string construction_site_){
 	std::string PathToFile(".\\Baustellen\\");
-	ConstructionSite += ".bin";
-    PathToFile += ConstructionSite;
+	construction_site_ += ".bin";
+    PathToFile += construction_site_;
     std::ofstream    FileToWrite;
     FileToWrite.open(PathToFile.c_str(), std::ios::binary);
     if(FileToWrite.good()){
         FileToWrite.write((char*)&FilledScaff,sizeof(BaseComponents<int>));
-        FileToWrite.write((char*)&CalcedData,sizeof(Dimensions));
+        FileToWrite.write((char*)&calced_dims_,sizeof(Dimensions));
         FileToWrite.close();
         //Logfile::getInstance().write("File successfully saved\n");        
     }else{
@@ -155,54 +155,54 @@ int Scaff::WriteCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dim
     return 0;
 }
 
-void Scaff::PrintListOfMaterial(std::ostream* WhereToPrint, const BaseComponents<int>& FilledScaff, const Dimensions& CalcedData){
+void Scaff::PrintListOfnum_of_comps_(std::ostream* WhereToPrint, const BaseComponents<int>& FilledScaff, const Dimensions& calced_dims_){
 
     *WhereToPrint << "\t+-------------------------------+\n";
-    *WhereToPrint << "\t|         Materialliste         |\n";
+    *WhereToPrint << "\t|         num_of_comps_liste         |\n";
     *WhereToPrint << "\t+-------------------------------+\n";
     *WhereToPrint << "\t|   Fuesse        |\t"<< FilledScaff.BaseJack <<"\t|\n";
     *WhereToPrint << "\t+-------------------------------+\n";
     *WhereToPrint << "\t|   Unterlagen    |\t"<< FilledScaff.BaseJack <<"\t|\n";
     *WhereToPrint << "\t+-------------------------------+\n";
-    *WhereToPrint << "\t|   Durchstiege   |\t"<< CalcedData.Floors <<"\t|\n";
+    *WhereToPrint << "\t|   Durchstiege   |\t"<< calced_dims_.Floors <<"\t|\n";
     *WhereToPrint << "\t+-------------------------------+\n";
-    *WhereToPrint << "\t|   Diagonalen    |\t"<< FilledScaff.Dia[0] <<"\t|\n";
+    *WhereToPrint << "\t|   diagonalen    |\t"<< FilledScaff.dia[0] <<"\t|\n";
     *WhereToPrint << "\t+-------------------------------+---------------+\n";
     *WhereToPrint << "\t|                 |\t73er\t|\t1.09m\t|\n";   
     *WhereToPrint << "\t+-----------------------------------------------+\n";
-    if(CalcedData.FW == W09){
-    *WhereToPrint << "\t| 66er  Rahmen    |\t0\t|\t"<<FilledScaff.Frames[0]<<"\t|"<<std::endl;
+    if(calced_dims_.FW == W09){
+    *WhereToPrint << "\t| 66er  Rahmen    |\t0\t|\t"<<FilledScaff.frames[0]<<"\t|"<<std::endl;
     *WhereToPrint << "\t+-----------------+-------------+---------------+\n";
-    *WhereToPrint << "\t| 1.00m Rahmen    |\t0\t|\t"<<FilledScaff.Frames[1]<<"\t|"<<std::endl;
+    *WhereToPrint << "\t| 1.00m Rahmen    |\t0\t|\t"<<FilledScaff.frames[1]<<"\t|"<<std::endl;
     *WhereToPrint << "\t++----------------+-------------+---------------+\n";
-    *WhereToPrint << "\t| 1.50m Rahmen    |\t0\t|\t"<<FilledScaff.Frames[2]<<"\t|"<<std::endl;
+    *WhereToPrint << "\t| 1.50m Rahmen    |\t0\t|\t"<<FilledScaff.frames[2]<<"\t|"<<std::endl;
     *WhereToPrint << "\t+-----------------+-------------+---------------+\n";
-    *WhereToPrint << "\t| 2.00m Rahmen    |\t0\t|\t"<<FilledScaff.Frames[3]<<"\t|"<<std::endl;
+    *WhereToPrint << "\t| 2.00m Rahmen    |\t0\t|\t"<<FilledScaff.frames[3]<<"\t|"<<std::endl;
     }else{
-        *WhereToPrint << "\t| 66er  Rahmen    |\t"<<FilledScaff.Frames[0]<< '\t'<<"| \t0\t|"<<std::endl;
+        *WhereToPrint << "\t| 66er  Rahmen    |\t"<<FilledScaff.frames[0]<< '\t'<<"| \t0\t|"<<std::endl;
         *WhereToPrint << "\t+-----------------+-------------+---------------+\n";
-        *WhereToPrint << "\t| 1.00m Rahmen    |\t"<<FilledScaff.Frames[1]<< '\t'<<"| \t0\t|"<<std::endl;
+        *WhereToPrint << "\t| 1.00m Rahmen    |\t"<<FilledScaff.frames[1]<< '\t'<<"| \t0\t|"<<std::endl;
         *WhereToPrint << "\t++----------------+-------------+---------------+\n";
-        *WhereToPrint << "\t| 1.50m Rahmen    |\t"<<FilledScaff.Frames[2]<< '\t'<<"| \t0\t|"<<std::endl;
+        *WhereToPrint << "\t| 1.50m Rahmen    |\t"<<FilledScaff.frames[2]<< '\t'<<"| \t0\t|"<<std::endl;
         *WhereToPrint << "\t+-----------------+-------------+---------------+\n";
-        *WhereToPrint << "\t| 2.00m Rahmen    |\t"<<FilledScaff.Frames[3]<< '\t'<<"| \t0\t|"<<std::endl;
+        *WhereToPrint << "\t| 2.00m Rahmen    |\t"<<FilledScaff.frames[3]<< '\t'<<"| \t0\t|"<<std::endl;
     }
     *WhereToPrint << "\t+---------------+---------------+---------------+---------------+---------------+\n";
-    *WhereToPrint<<"\t|\t\t|\tAlu\t|\tStahl\t|\tLehnen\t|   B.Bretter\t|\n"
+    *WhereToPrint<<"\t|\t\t|\talu\t|\tStahl\t|\tLehnen\t|   B.Bretter\t|\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n"
-                <<"\t|\t3,07m\t|\t"<<FilledScaff.UsedPlanks.alu[5]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[5]<<"\t|\t"<< FilledScaff.SideGuard[5] <<"\t|\t"<< FilledScaff.ToeBoard[5] <<"\t|\n"
+                <<"\t|\t3,07m\t|\t"<<FilledScaff.UsedPlanks.alu[5]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[5]<<"\t|\t"<< FilledScaff.side_guard[5] <<"\t|\t"<< FilledScaff.ToeBoard[5] <<"\t|\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n"
-                <<"\t|\t2,57m\t|\t"<<FilledScaff.UsedPlanks.alu[4]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[4]<<"\t|\t"<< FilledScaff.SideGuard[4] <<"\t|\t"<< FilledScaff.ToeBoard[4] <<"\t|\n"
+                <<"\t|\t2,57m\t|\t"<<FilledScaff.UsedPlanks.alu[4]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[4]<<"\t|\t"<< FilledScaff.side_guard[4] <<"\t|\t"<< FilledScaff.ToeBoard[4] <<"\t|\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n"
-                <<"\t|\t2,07m\t|\t"<<FilledScaff.UsedPlanks.alu[3]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[3]<<"\t|\t"<< FilledScaff.SideGuard[3] <<"\t|\t"<< FilledScaff.ToeBoard[3] <<"\t|\n"
+                <<"\t|\t2,07m\t|\t"<<FilledScaff.UsedPlanks.alu[3]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[3]<<"\t|\t"<< FilledScaff.side_guard[3] <<"\t|\t"<< FilledScaff.ToeBoard[3] <<"\t|\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n"
-                <<"\t|\t1,57m\t|\t"<<FilledScaff.UsedPlanks.alu[2]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[2]<<"\t|\t"<<FilledScaff.SideGuard[2]<<"\t|\t"<< FilledScaff.ToeBoard[2] <<"\t|\t\n"
+                <<"\t|\t1,57m\t|\t"<<FilledScaff.UsedPlanks.alu[2]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[2]<<"\t|\t"<<FilledScaff.side_guard[2]<<"\t|\t"<< FilledScaff.ToeBoard[2] <<"\t|\t\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n"
-                <<"\t|\t1,09m\t|\t"<<FilledScaff.UsedPlanks.alu[1]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[1]<<"\t|\t"<< FilledScaff.SideGuard[1]<<"\t|\t"<< FilledScaff.ToeBoard[1] <<"\t|\t\n"
+                <<"\t|\t1,09m\t|\t"<<FilledScaff.UsedPlanks.alu[1]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[1]<<"\t|\t"<< FilledScaff.side_guard[1]<<"\t|\t"<< FilledScaff.ToeBoard[1] <<"\t|\t\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n"
-                <<"\t|\t0,73m\t|\t"<<FilledScaff.UsedPlanks.alu[0]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[0]<<"\t|\t"<< FilledScaff.SideGuard[0]<<"\t|\t"<< FilledScaff.ToeBoard[0] <<"\t|\t\n"
+                <<"\t|\t0,73m\t|\t"<<FilledScaff.UsedPlanks.alu[0]<<"\t|\t"<<FilledScaff.UsedPlanks.steel[0]<<"\t|\t"<< FilledScaff.side_guard[0]<<"\t|\t"<< FilledScaff.ToeBoard[0] <<"\t|\t\n"
                 << "\t+---------------+---------------+---------------+---------------+---------------+\n";
-    //Scaff::VisualizeOne(WhereToPrint,CalcedData);
+    //Scaff::VisualizeOne(WhereToPrint,calced_dims_);
     
 }
 
@@ -213,14 +213,14 @@ void Scaff::PrintListOfMaterial(std::ostream* WhereToPrint, const BaseComponents
 //There needs to be an function in the menus section that 
 //asks the questins and thern calls the member function that
 //actually changes the fields
-void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& ScaffToChange){
+void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::FacadeScaff& ScaffToChange){
     int count =0;
     //Lets count how manys field are set 
     //It seems like there is a a bug when when 
     //we have calculated just one field
     //There is no Field output 
     for(int i=0;i<6;i++){
-        if((ScaffToChange.GetDimensions()).FL[i] != three_h)
+        if((ScaffToChange.GetDimensions()).FL[i] != zero)
             count++;
     }
     std::cout << "Welches Feld soll ersetzt werden: "<< std::endl;
@@ -235,7 +235,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
             case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[0]=one_h;break;
             case one: std::cout << "1.09m Feld\n";GezeigteFelder[0]=one;break;
             case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[0]=one;break;
-            case three_h: std::cout << "We only have one FIeld\n"<< std::endl;break;
+            case zero: std::cout << "We only have one FIeld\n"<< std::endl;break;
         }
     }else{
         for(int i=0;i<count;i++){
@@ -247,7 +247,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
                 case one_h: std::cout << "1.57m Feld\n";GezeigteFelder[i]=one_h;break;
                 case one: std::cout << "1.09m Feld\n";GezeigteFelder[i]=one;break;
                 case seventy: std::cout << "0.73m Feld\n";GezeigteFelder[i]=one;break;
-                case three_h: std::cout << "We only have one FIeld\n"<< std::endl; break;
+                case zero: std::cout << "We only have one FIeld\n"<< std::endl; break;
             }     
         }
     }
@@ -284,7 +284,7 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
         We use this switch command to determine which fields 
         the algorithm has calculated, store them in our array 
         so that we can interprete the input of the user into 
-        a specific field length which happens int he if else 
+        a specific field length_ which happens int he if else 
         statement later(r. 265-266);
         */
     /*switch((ScaffToChange.GetDimensions()).FL[0]){
@@ -330,20 +330,20 @@ void Scaff::ChangeFieldDivision(Dimensions DataToPrintScaff, Scaff::BaseScaff& S
 }
 
 void Scaff::PrintFieldDivision(const Scaff::Dimensions& DataToPrint){
-    double TestLength=0;
+    double Testlength_=0;
     for(int i=0;i<6;i++){
         switch(DataToPrint.FL[i]){
-        case three:for(int i =0; i<DataToPrint.FieldRep[1][three];i++){std::cout << "|307";TestLength+=3.07;}break;
-        case two_h:for(int i =0; i<DataToPrint.FieldRep[1][two_h];i++){std::cout << "|257";TestLength+=2.57;}break;
-        case two:for(int i =0; i<DataToPrint.FieldRep[1][two];i++){std::cout << "|207";TestLength+=2.07;}break;
-        case one_h:for(int i =0; i<DataToPrint.FieldRep[1][one_h];i++){std::cout << "|157";TestLength+=1.57;}break;
-        case one:for(int i =0; i<DataToPrint.FieldRep[1][one];i++){std::cout << "|109";TestLength+=1.09;}break;
-        case seventy:for(int i =0; i<DataToPrint.FieldRep[1][seventy];i++){std::cout << "|073";TestLength+=0.73;}break;
-        case three_h: break;
+        case three:for(int i =0; i<DataToPrint.FieldRep[1][three];i++){std::cout << "|307";Testlength_+=3.07;}break;
+        case two_h:for(int i =0; i<DataToPrint.FieldRep[1][two_h];i++){std::cout << "|257";Testlength_+=2.57;}break;
+        case two:for(int i =0; i<DataToPrint.FieldRep[1][two];i++){std::cout << "|207";Testlength_+=2.07;}break;
+        case one_h:for(int i =0; i<DataToPrint.FieldRep[1][one_h];i++){std::cout << "|157";Testlength_+=1.57;}break;
+        case one:for(int i =0; i<DataToPrint.FieldRep[1][one];i++){std::cout << "|109";Testlength_+=1.09;}break;
+        case seventy:for(int i =0; i<DataToPrint.FieldRep[1][seventy];i++){std::cout << "|073";Testlength_+=0.73;}break;
+        case zero: break;
         }  
     }
     std::cout << "|\n"<< std::endl;
-    std::cout << "Gesamtlaenge: " << TestLength << "m\n"<< std::endl;
-    std::cout << "Gewuenschte Laenge: " << DataToPrint.WishedLength<<"m\n"<<std::endl;
+    std::cout << "Gesamtlaenge: " << Testlength_ << "m\n"<< std::endl;
+    std::cout << "Gewuenschte Laenge: " << DataToPrint.Wishedlength_<<"m\n"<<std::endl;
 }
  

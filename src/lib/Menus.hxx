@@ -1,7 +1,7 @@
 #ifndef MENUS_HXX
 #define MENUS_HXX
 
-# include "BaseScaff.hxx"
+# include "FacadeScaff.hxx"
 
 /*
     In this file we define the most of the functions that interacts with 
@@ -23,7 +23,7 @@ int WantToSafe();
 int MainMenu();
 
 //Ok Facade, montage or demontage?
-int BaseScaffMenu();
+int FacadeScaffMenu();
 
 //Montage, lets get the Data
 void GetMontageInput(Scaff::UserInput& ToFill);
@@ -33,14 +33,14 @@ int GetDismantlingInput(/*UserInput& ToFill*/);
 
 //If we have the Data, we can create the Scaffold 
 //and eventually save the calculations
-void NewBaseScaff(const Scaff::UserInput& Input);
+void NewFacadeScaff(const Scaff::UserInput& Input);
 
 //This functions is to savely convert the user inserted
 //data in the needed type
 template<typename Target,typename Source>
 Target lexical_cast(Source arg);
 
-std::string InputConstructionSiteName(void);
+std::string Inputconstruction_site_Name(void);
 void Banner();
 
 int SubMenu();

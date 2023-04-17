@@ -5,7 +5,7 @@
 
 #include "lib/Menus.hxx"
 #include "lib/umlaute.h"
-#include "lib/BaseScaff.hxx"   
+#include "lib/FacadeScaff.hxx"   
 //#include "Logger.hxx"
 #include "lib/Utilities.hxx"
 
@@ -94,7 +94,7 @@ int MainMenu(){
 	return Choice;
 }*/
 
-int BaseScaffMenu(){
+int FacadeScaffMenu(){
 	int Choice=0;
 	std::string Temp("");
 	Banner();
@@ -124,14 +124,14 @@ void GetMontageInput(UserInput& ToFill){
 		std::getline(std::cin,temp);
 		if(temp=="")return;						//Lets see if we can catch an empty input with this
 		FT = lexical_cast<int,std::string>(temp);
-		if(FT == 1)ToFill.FrameType =1;
-		else ToFill.FrameType = 2;
+		if(FT == 1)ToFill.frame_type_ =1;
+		else ToFill.frame_type_ = 2;
 	}while(FT != 1 && FT != 2);
-	/*std::cout << "\n\tBevorzugte Bohlen\n\t<1> Alubohlen\n"
+	/*std::cout << "\n\tBevorzugte Bohlen\n\t<1> alubohlen\n"
 					 "\t<2> Stahlbohlen\n";
 	std::cout << "\tIhre Wahl: ";
 	std::getline(std::cin,temp);
-	ToFill.PlankChoice = lexical_cast<int,std::string>(temp);*/
+	ToFill.plank_choice_ = lexical_cast<int,std::string>(temp);*/
 	
 	std::cout << "\tHoehe: ";
 	std::string temp("");
@@ -139,20 +139,20 @@ void GetMontageInput(UserInput& ToFill){
 	if(temp=="")return;						//Lets see if we can catch an empty input with this
 	if(temp.size()==1)return;
 	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
-	ToFill.Height = lexical_cast<double,std::string>(temp);
+	ToFill.height_ = lexical_cast<double,std::string>(temp);
 	
 	std::cout << "\tLaenge: ";
 	std::getline(std::cin,temp);
 	if(temp=="")return;						//Lets see if we can catch an empty input with this
 	if(temp.size()==1)return;
 	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
-	ToFill.Length = lexical_cast<double,std::string>(temp);
+	ToFill.length_ = lexical_cast<double,std::string>(temp);
 }
 
 
-void NewBaseScaff(const UserInput& Input){
+void NewFacadeScaff(const UserInput& Input){
 		//Create the object and calculate everything with the given data
-		BaseScaff NewScaff(Input);
+		FacadeScaff NewScaff(Input);
 		std::string NCS("");
 		//After the creation we first want to print the key that
 		//the key that gets calculated, then a small visualization 
@@ -167,9 +167,9 @@ void NewBaseScaff(const UserInput& Input){
 					Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
 					Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 					break;
-				case 2: Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());break;
-				case 3: NCS = InputConstructionSiteName();
-					WriteCalcedMaterial(NewScaff.GetComponents(), NewScaff.GetDimensions(),NCS);
+				case 2: Scaff::PrintListOfnum_of_comps_(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());break;
+				case 3: NCS = Inputconstruction_site_Name();
+					WriteCalcednum_of_comps_(NewScaff.GetComponents(), NewScaff.GetDimensions(),NCS);
 					AddDBEntry(NCS);	break;
 				case 4: exit(0);
 			}
@@ -177,7 +177,7 @@ void NewBaseScaff(const UserInput& Input){
 		}while(true);
 }
 
-std::string InputConstructionSiteName(void){
+std::string Inputconstruction_site_Name(void){
 	std::cout << "\nGeben Sie den Baustellennamen ein:  " << std::endl;
 	std::string temp("");
 	std::getline(std::cin,temp);
@@ -187,14 +187,14 @@ std::string InputConstructionSiteName(void){
 }
 
 int GetDismantlingInput(){
-		BaseScaff Data;
+		FacadeScaff Data;
         std::string CS("");
 		for(auto& v : GetAllDBEntrys())std::cout << v << std::endl;
-		CS=InputConstructionSiteName();
-        ReadCalcedMaterial(Data.GetComponents(),Data.GetDimensions(),CS);
+		CS=Inputconstruction_site_Name();
+        ReadCalcednum_of_comps_(Data.GetComponents(),Data.GetDimensions(),CS);
 		Scaff::PrintKeyData(&std::cout, Data.GetDimensions());
         Scaff::VisualizeOne(&std::cout,Data.GetDimensions());
-		Scaff::PrintListOfMaterial(&std::cout,Data.GetComponents(), Data.GetDimensions());
+		Scaff::PrintListOfnum_of_comps_(&std::cout,Data.GetComponents(), Data.GetDimensions());
 	    if(WantToSafe()==1){
             std::string del(".\\Baustellen\\");
 			DeleteDBEntry(CS);
@@ -216,8 +216,8 @@ int SubMenu(){
 	do{
 		std::cout << "\t\n\n\t+----------------------------------------------------+\n";
 		std::cout << "\t|  [1] Feldeinteilung aendern                        |\n";
-		std::cout << "\t|  [2] Materialliste anzeigen                        |\n";
-		std::cout << "\t|  [3] Materialliste und Feldeinteilung so speichern |\n";
+		std::cout << "\t|  [2] num_of_comps_liste anzeigen                        |\n";
+		std::cout << "\t|  [3] num_of_comps_liste und Feldeinteilung so speichern |\n";
 		std::cout << "\t|  [4] Beenden                                       |\n";
 		std::cout << "\t+----------------------------------------------------+\n";
 		std::cout << "\n\n\tIhre Auswahl: ";
