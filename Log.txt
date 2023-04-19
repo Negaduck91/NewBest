@@ -80,3 +80,63 @@
 
 2022-11-21.17:09:05:	Deleting File complete.
 
+2023-01-01 21:09:29: Could not open the file to store Data
+
+2023-01-01 21:13:52: Could not open the file to store Data
+
+2023-01-01 21:15:48: File successfully saved
+
+2023-01-08 00:24:05: Programm aufgrung leerer eingabe geschlossen
+
+2023-01-08 00:31:12: File successfully saved
+
+2023-01-08 00:36:46: File successfully saved
+
+2023-01-08 01:04:41: File successfully saved
+
+2023-01-08 14:34:12: File successfully saved
+
+2023-01-08 14:35:21: Entry successfull deleted
+
+2023-01-08 14:35:21: Deleting File complete.
+
+2023-01-08 14:35:37: Entry successfull deleted
+
+2023-01-08 14:35:37: Deleting File complete.
+
+2023-01-08 14:35:55: Entry successfull deleted
+
+2023-01-08 14:35:55: Deleting File complete.
+
+2023-01-08 14:36:03: Entry successfull deleted
+
+2023-01-08 14:36:03: Deleting File complete.
+
+2023-01-08 14:40:43: File successfully saved
+
+2023-01-08 14:42:22: Entry successfull deleted
+
+2023-01-08 14:42:22: Deleting File complete.
+
+2023-01-08 16:50:10: File successfully saved
+
+2023-01-08 17:56:43: File successfully saved
+
+2023-01-08 18:04:51: File successfully saved
+
+2023-01-08 18:37:23: File successfully saved
+
+2023-01-08 18:43:51: File successfully saved
+
+2023-01-08 18:44:52: File successfully saved
+
+2023-01-08 18:45:10: Entry successfull deleted
+
+2023-01-08 18:45:10: Deleting File complete.
+
+2023-01-08 18:53:11: File successfully saved
+
+2023-01-08 18:54:21: Entry successfull deleted
+
+2023-01-08 18:54:21: Deleting File complete.
+

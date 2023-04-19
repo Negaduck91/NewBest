@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/alex/Dokumente/NewBesr/build",
+  "command": "/usr/bin/g++  -I/home/alex/Dokumente/NewBesr -g -o CMakeFiles/NewBest.dir/main.cpp.o -c /home/alex/Dokumente/NewBesr/main.cpp",
+  "file": "/home/alex/Dokumente/NewBesr/main.cpp"
+},
+{
+  "directory": "/home/alex/Dokumente/NewBesr/build",
+  "command": "/usr/bin/g++  -I/home/alex/Dokumente/NewBesr -g -o CMakeFiles/NewBest.dir/Menus.cxx.o -c /home/alex/Dokumente/NewBesr/Menus.cxx",
+  "file": "/home/alex/Dokumente/NewBesr/Menus.cxx"
+},
+{
+  "directory": "/home/alex/Dokumente/NewBesr/build",
+  "command": "/usr/bin/g++  -I/home/alex/Dokumente/NewBesr -g -o CMakeFiles/NewBest.dir/Logger.cxx.o -c /home/alex/Dokumente/NewBesr/Logger.cxx",
+  "file": "/home/alex/Dokumente/NewBesr/Logger.cxx"
+},
+{
+  "directory": "/home/alex/Dokumente/NewBesr/build",
+  "command": "/usr/bin/g++  -I/home/alex/Dokumente/NewBesr -g -o CMakeFiles/NewBest.dir/Utilities.cxx.o -c /home/alex/Dokumente/NewBesr/Utilities.cxx",
+  "file": "/home/alex/Dokumente/NewBesr/Utilities.cxx"
+},
+{
+  "directory": "/home/alex/Dokumente/NewBesr/build",
+  "command": "/usr/bin/g++  -I/home/alex/Dokumente/NewBesr -g -o CMakeFiles/NewBest.dir/BaseScaff.cxx.o -c /home/alex/Dokumente/NewBesr/BaseScaff.cxx",
+  "file": "/home/alex/Dokumente/NewBesr/BaseScaff.cxx"
+}
+]

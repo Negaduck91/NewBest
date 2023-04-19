@@ -1,12 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-//#include <windows.h>
+#include <bits/stdc++.h>
+
 
 #include "Menus.hxx"
 #include "umlaute.h"
 #include "BaseScaff.hxx"
-//#include "Logger.hxx"
 #include "Utilities.hxx"
 
 
@@ -62,7 +62,11 @@ int MainMenu(){
 		std::cout << "\t+---------------------+\n";
 		std::cout << "\n\n\tIhre Auswahl: ";
 		std::getline(std::cin,Temp);
-		if(Temp=="")exit(0);
+		if(Temp==""){
+			std::cerr<<"Leere eingaben schliesen das Programm sofort\n";
+			Logfile::getInstance().write("Leere eingaben schliesen das Programm sofort\n");	
+			exit(0);
+		}
 		Temp.erase(remove(Temp.begin(),Temp.end(),' '),Temp.end());
 		Choice = lexical_cast<int,std::string>(Temp);
 	}while(Choice != 1 && Choice != 2);
@@ -135,17 +139,42 @@ void GetMontageInput(UserInput& ToFill){
 	std::cout << "\tHoehe: ";
 	std::string temp("");
 	std::getline(std::cin,temp);
-	if(temp=="")return;						//Lets see if we can catch an empty input with this
-	if(temp.size()==1)return;
+	if(temp==""){	//Lets see if we can catch an empty input with this
+		std::cerr<<"Leere eingaben schliesen das Programm sofort\n";
+		Logfile::getInstance().write("Programm aufgrung leerer eingabe geschlossen\n");	
+		exit(1);
+	}										
+	if(temp.size()==1){
+		std::cerr <<"Es muss eine Dezimalzahl eingegeben werden\n";
+		exit(1);
+	}
 	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
-	ToFill.Height = lexical_cast<double,std::string>(temp);
+	temp.erase(remove(temp.begin(),temp.end(),'c'),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),'m'),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),'.'),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),','),temp.end());
+
+
+	ToFill.Height = lexical_cast<double,std::string>(temp)/100;
 	
 	std::cout << "\tLaenge: ";
 	std::getline(std::cin,temp);
-	if(temp=="")return;						//Lets see if we can catch an empty input with this
-	if(temp.size()==1)return;
+	if(temp==""){	//Lets see if we can catch an empty input with this
+		std::cerr<<"Leere eingaben schliesen das Programm sofort\n";
+		Logfile::getInstance().write("Programm aufgrung leerer eingabe geschlossen\n");	
+		exit(1);
+	}						
+	if(temp.size()==1){
+		std::cerr <<"Es muss eine Dezimalzahl eingegeben werden\n";
+		exit(1);
+	}
 	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
-	ToFill.Length = lexical_cast<double,std::string>(temp);
+	temp.erase(remove(temp.begin(),temp.end(),'c'),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),'m'),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),'.'),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),','),temp.end());
+	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
+	ToFill.Length = lexical_cast<double,std::string>(temp)/100;
 }
 
 
@@ -161,16 +190,41 @@ void NewBaseScaff(const UserInput& Input){
 		Scaff::PrintFieldDivision(NewScaff.GetDimensions());
 		do{
 			switch(SubMenu()){
-				case 1: Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff);
-					Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
-					Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
-					Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+
+				case 1: 
+					switch(SubMenuChangeFieldDivision()){
+                        case 1:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,1);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case 2:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,2);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case 3:
+                            Scaff::ChangeFieldDivision(NewScaff.GetDimensions(),NewScaff,3);
+					        Scaff::PrintKeyData(&std::cout,NewScaff.GetDimensions());
+					        Scaff::VisualizeOne(&std::cout,NewScaff.GetDimensions());
+					        Scaff::PrintFieldDivision(NewScaff.GetDimensions());
+					        break;
+                        case 4 :
+                            exit(0);
+                    }
 					break;
-				case 2: Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());break;
-				case 3: NCS = InputConstructionSiteName();
+				case 2: 
+					Scaff::PrintListOfMaterial(&std::cout,NewScaff.GetComponents(),NewScaff.GetDimensions());
+					break;
+				case 3: 
+					NCS = InputConstructionSiteName();
 					WriteCalcedMaterial(NewScaff.GetComponents(), NewScaff.GetDimensions(),NCS);
-					AddDBEntry(NCS);	break;
-				case 4: exit(0);
+					AddDBEntry(NCS);	
+					break;
+				case 4: 
+					exit(0);
 			}
 			
 		}while(true);
@@ -179,22 +233,33 @@ void NewBaseScaff(const UserInput& Input){
 std::string InputConstructionSiteName(void){
 	std::cout << "\nGeben Sie den Baustellennamen ein:  " << std::endl;
 	std::string temp("");
-	std::getline(std::cin,temp);
-	if(temp=="")exit(0);
+	
+	std::getline(std::cin >> std::ws,temp);
+	if(temp==""){	//Lets see if we can catch an empty input with this
+		std::cerr<<"Leere eingaben schliesen das Programm sofort\n";
+		Logfile::getInstance().write("Programm aufgrung leerer eingabe geschlossen\n");	
+		exit(1);
+	}					
 	temp.erase(remove(temp.begin(),temp.end(),' '),temp.end());
 	return temp;
 }
 
 int GetDismantlingInput(){
 		BaseScaff Data;
+		BaseComponents<int> ReadedComponents;
+		Dimensions ReadedDimensions;
         std::string CS("");
 		for(auto& v : GetAllDBEntrys())std::cout << v << std::endl;
 		CS=InputConstructionSiteName();
-        ReadCalcedMaterial(Data.GetComponents(),Data.GetDimensions(),CS);
+        ReadCalcedMaterial(ReadedComponents,ReadedDimensions,CS);
+		Data.SetDimensions(ReadedDimensions);
+		Data.SetComponents(ReadedComponents);
 		Scaff::PrintKeyData(&std::cout, Data.GetDimensions());
         Scaff::VisualizeOne(&std::cout,Data.GetDimensions());
+		Scaff::PrintFieldDivision(Data.GetDimensions());
 		Scaff::PrintListOfMaterial(&std::cout,Data.GetComponents(), Data.GetDimensions());
-	    if(WantToSafe()==1){
+	    
+		if(WantToSafe()==1){
             std::string del(".\\Baustellen\\");
 			DeleteDBEntry(CS);
             del += CS;
@@ -220,11 +285,7 @@ int SubMenu(){
 		std::cout << "\t|  [4] Beenden                                       |\n";
 		std::cout << "\t+----------------------------------------------------+\n";
 		std::cout << "\n\n\tIhre Auswahl: ";
-		/*
-			BUG
-			in the second iteration of the do loop std::getline()
-			just gets ignored so that no input can be made... 
-		*/
+		
 		//std::getline(std::cin,Temp);
 		std::cin >> Choice;
 		//std::cin.ignore('\n');
@@ -238,7 +299,6 @@ int SubMenu(){
 
 int SubMenuChangeFieldDivision(){
 	int Choice=0;
-	//std::string Temp("");
 	std::cout << "\t\n\n\t+----------------------------------------------------+\n";
 	std::cout << "\t|  [1] Feld hinzufuegen                              |\n";
 	std::cout << "\t|  [2] Feld abziehen                                 |\n";

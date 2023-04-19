@@ -20,7 +20,7 @@ namespace Scaff{
 
     //Like the first function but this time its reads in 
     //the data from the third argument.
-    int ReadCalcedMaterial(const BaseComponents<int>& FilledScaff, const Dimensions& CalcedData,std::string& ConstructionSite);
+    int ReadCalcedMaterial(BaseComponents<int>& FilledScaff,Dimensions& CalcedData,std::string& ConstructionSite);
 
     
     void PrintListOfMaterial(std::ostream* WhereToPrint, const BaseComponents<int>& FilledScaff,const Dimensions& CalcedData);
@@ -37,7 +37,7 @@ namespace Scaff{
     void PrintFieldDivision(const Scaff::Dimensions& DataToPrint);
     //void PrintUpdatedFieldDivision(const Scaff::Dimensions& DataToPrint);
 
-    void ChangeFieldDivision(Scaff::Dimensions DataToPrintScaff, BaseScaff& ScaffToChange);
+    void ChangeFieldDivision(Scaff::Dimensions DataToPrintScaff, BaseScaff& ScaffToChange,int SubOrAddOrSwap);
 
     //void UpdateMaterialList(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
 

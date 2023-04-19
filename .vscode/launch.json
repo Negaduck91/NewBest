@@ -8,12 +8,12 @@
             "name": "(gdb) Starten",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Scaff",
-            "args": ["22.22","22.22"],
+            "program": "${workspaceFolder}/Scaff.exe",
+            "args": ["15.85","22.22", "257"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
                 {

@@ -1,14 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "../GT100"
-		},
-		{
-			"name": "109034643",
-			"path": "../109034643"
-		},
-		{
-			"name": "NewBesr",
+			"name": "NewBest",
 			"path": "."
 		}
 	],
@@ -96,7 +89,13 @@
 			"typeinfo": "cpp",
 			"utility": "cpp",
 			"valarray": "cpp",
-			"variant": "cpp"
+			"variant": "cpp",
+			"algorithm": "cpp",
+			"iterator": "cpp",
+			"random": "cpp",
+			"expected": "cpp",
+			"spanstream": "cpp",
+			"stacktrace": "cpp"
 		}
 	}
 }

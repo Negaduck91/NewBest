@@ -129,7 +129,7 @@ private:
 public:
     BaseScaff()=default;
     //This one is used for a quick field calculation
-	BaseScaff(double WishedLength, double WishedHeight);
+	BaseScaff(double WishedLength, double WishedHeight, FieldIndicator BaseField = fifth);
     //This one is used if we get full input from the user
 	BaseScaff(const UserInput &Input);
     ~BaseScaff()=default;
@@ -141,18 +141,23 @@ public:
     inline void SetShortFieldsL(int ShortFields){this->CalcedData.ShortFieldsL=ShortFields;}
     inline void SetFloors(int CalcedFloors){ this->CalcedData.Floors    = CalcedFloors;}
 
-    inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
     inline unsigned int GetLongFieldsL(){return this->CalcedData.LongFieldsL;}
     inline unsigned int GetShortFieldsL(){return this->CalcedData.ShortFieldsL;}
     inline unsigned int GetFloors(){return this->CalcedData.Floors;}
     */
 
+    void SetAllFieldsL(int FieldsToAdd){this->CalcedData.AllFieldsL=FieldsToAdd;}
     void SetDimensions(const Dimensions& DataToSet);
-    void SetUpdatetComponents(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
+    void SetComponents(const BaseComponents<int> ComponentsToSet);
     void SetExtraField(FieldLength FieldToAdd);
 
     inline BaseComponents<int> GetComponents(void){return this->Material;}
     inline Dimensions GetDimensions(void){return this->CalcedData;}
+    inline unsigned int GetAllFieldsL(){return this->CalcedData.AllFieldsL;}
+
+    void SwapFields(FieldLength FieldToSub,FieldLength FieldToAdd, int Floors);
+    void SubField(FieldLength FieldToSub, int Floors);
+    void AddField(FieldLength FieldToAdd, int Floors);
 
 
    
@@ -160,7 +165,7 @@ public:
 private:
 
     void CalcFloors(double WishedHeight);
-    void CalcFieldsL(double MaxLength);
+    void CalcFieldsL(double MaxLength, FieldIndicator BaseField = fifth);
     void FieldBase300L(double MaxLength);
     void FieldBase250L(double MaxLength);
     void CalcMaterial();
